@@ -1,0 +1,51 @@
+programa _Ola_Mundo100
+
+inicio
+	inteiro : a, b, c;
+	real : r;
+	caractere : TexTo[50];
+
+	a <- 10;
+	b <- 13;
+	c <- 45;	
+	r <- -12.35;
+	TexTo <- 'Ola Mundo';
+	
+	
+	
+	enquanto(a >= 4) faca
+		a <- a - 1;
+	fim enquanto;
+	
+	se (a = b) entao
+		se ( nao a <= (b*3) ou c >= b) entao
+			a <- b + c * 2;
+		fim se;
+	senao
+		escreva(a);
+		repita 
+			a <- a + 1;
+		ate(a > 20);
+	fim  se;
+	
+	
+	para i de 1 passo 2 ate 10 faca
+		
+		avalie (a + 2)
+			caso 12: 
+				a <- a + c;
+			
+			caso 11:
+				b <- b - 1;
+				se ((a+b) >= b*a  xou (a*a)/2 = c/2) entao
+				
+				senao
+					// Aqui vazio esta dado erro. Fica esperando um comando
+				fim se;
+			caso 10: 
+		senao : 
+			a <- a*a*a;
+		fim   avalie;
+	fim para;
+
+fim.

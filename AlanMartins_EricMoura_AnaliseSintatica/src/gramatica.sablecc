@@ -1,0 +1,168 @@
+Helpers
+
+		enter = 13;	
+	line_feed = 10;
+		  tab = 9;
+       espaco = ' ';
+   
+   eol = (enter | line_feed | line_feed enter);
+   
+   nao_numero = ['_' + [['a'..'z'] + ['A'..'Z']]]+;
+   numero = ['0' .. '9']+;
+   todos = [0 .. 127];
+   sem_eol = [todos - [enter + line_feed]];
+   sem_estrela = [todos - '*'];
+   sem_estrela_e_barra = [sem_estrela - '/'];
+   
+   c_linha = '//' sem_eol*; 
+   c_bloco = '/*' sem_estrela* '*'+ (sem_estrela_e_barra sem_estrela* '*'+ )* '/';
+   sinal = '+' | '-';
+
+Tokens
+	
+	num_inteiro = sinal? numero;
+	num_real = sinal? numero '.' numero;
+	string = ''' sem_eol+ ''';
+	
+	constante = 'constante';
+	aspas_simples = ''';
+	virgula = ',';
+	ponto = '.';
+    dois_pontos = ':';
+    ponto_virgula = ';';
+    l_par = '(';
+    r_par = ')';
+    l_colc = '[';
+    r_colc = ']';
+    mult = '*';
+    div = '/';
+    mais = '+';
+    menos = '-';
+    atribuicao = '<-';
+    
+    igual = '=';
+    igual_log = '==';
+    diferente = '<>';
+    menor = '<';
+    menor_igual = '<=';
+    maior = '>';
+    maior_igual = '>=';
+    e = 'e';
+    ou = 'ou'; 
+    xou = 'xou';
+    nao = 'nao';
+    
+    programa = 'programa';
+    variavel = 'var';
+    inicio = 'inicio';
+    fim = 'fim.';
+    fim_para = 'fim' espaco+ 'para';
+    fim_enquanto = 'fim' espaco+ 'enquanto';
+    fim_se = 'fim' espaco+ 'se';
+    fim_avalie = 'fim' espaco+ 'avalie';
+    se = 'se'; 
+    enquanto = 'enquanto';
+    para = 'para';
+    de = 'de';
+    entao = 'entao';
+    faca = 'faca';
+    senao = 'senao';
+    repita = 'repita';
+    ate = 'ate'; 
+    passo = 'passo';   
+    escreva = 'escreva';
+    leia = 'leia';
+    avalie = 'avalie';
+    caso = 'caso';
+    
+    caractere = 'caractere';
+    inteiro = 'inteiro';
+    real = 'real';
+    
+    branco = (espaco | tab | line_feed | enter)*; 
+    id = nao_numero (numero | nao_numero)*;
+    comentario = c_linha | c_bloco;
+	
+
+Ignored Tokens
+ 	 branco,
+ 	 comentario;
+ 	 
+ 	 
+Productions
+	program = programa id inicio declaracao comando fim;
+
+  	declaracao = {unico} variavel_definicao | {multiplo} declaracao variavel_definicao | {const} constante identificador valor ponto_virgula ;
+
+  	variavel_definicao = tipo dois_pontos multiplo_id identificador ponto_virgula ;
+
+  	identificador = {unico} id | {multiplo} id l_colc num_inteiro r_colc;
+
+	valor = {string} string | {inteiro} num_inteiro | {real} num_real;
+
+  	tipo = {tipo_real} real | {tipo_int} inteiro | {tipo_caractere} caractere;
+ 
+ 	multi_identificador = identificador virgula ;
+ 	multiplo_id = multi_identificador* ;
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	comando = {unico} definicao_comando | {multiplo} comando definicao_comando ;
+
+  	definicao_comando = {cmd_atribuicao} identificador atribuicao exp ponto_virgula 
+  			| {decl_leia}  leia  l_par  multiplo_id   identificador   r_par   ponto_virgula
+  			| {decl_escreva} escreva l_par multipla_exp exp r_par ponto_virgula
+			| {decl_avalie} avalie  l_par  exp  r_par  multiplo_caso  opcional_senao_caso  fim_avalie  ponto_virgula
+			| {decl_enquanto} enquanto  l_par  exp_logica  r_par  faca  comando fim_enquanto ponto_virgula
+			| {decl_repita} repita comando ate l_par exp_logica r_par ponto_virgula
+			| {decl_para_ate} para identificador de num_inteiro ate [int]:num_inteiro faca comando fim_para ponto_virgula
+			| {decl_para_passo} para identificador de num_inteiro passo [int]:num_inteiro ate [n_int]:num_inteiro faca comando fim_para ponto_virgula
+			| {decl_se} se l_par exp_logica r_par entao comando opcional_senao_se fim_se ponto_virgula
+	;
+
+	opcional_senao_se = senao_se? ;
+	senao_se = senao comando ; 
+
+	opcional_senao_caso = senao_caso? ;
+	senao_caso = senao dois_pontos comando ; 
+	 
+	multiplo_caso = definicao_caso* ;
+	definicao_caso = caso valor dois_pontos comando ;
+
+	multi_exp = exp virgula;
+ 	multipla_exp = multi_exp* ;
+	
+	
+
+	exp = {menos_exp} menos exp_arit | {exp_aritmetica} exp_arit ;
+	
+	exp_arit = {termo} termo | {mais} exp_arit mais termo | {menos} exp_arit menos termo;	
+  	 
+  	termo = {fator} fator | {multiplicacao} termo mult fator | {divisao} termo div fator ;
+
+  	fator = {identificador} id | {valor} valor | {exp} l_par  exp_arit  r_par;
+  	
+  	
+  	
+  	
+  	exp_logica = {nao} nao logica | {logica} logica;
+  	
+  	logica = {e}    	   logica e relacional
+    	   | {ou}   	   logica ou relacional
+    	   | {xou}  	   logica xou relacional
+    	   | {relacional}  relacional
+   	; 
+  	
+  	
+  	relacional =  {igual}        [l]:exp igual [r]:exp
+    		   	| {diferente}    [l]:exp diferente [r]:exp
+    		   	| {menor_igual}  [l]:exp menor_igual [r]:exp
+    		   	| {maior_igual}  [l]:exp maior_igual [r]:exp
+    		   	| {menor}        [l]:exp menor [r]:exp
+    		   	| {maior}        [l]:exp maior [r]:exp
+   	;
+
+	             
