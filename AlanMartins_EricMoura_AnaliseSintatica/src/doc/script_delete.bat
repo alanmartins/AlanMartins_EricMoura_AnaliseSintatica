@@ -5,4 +5,3 @@ rd lexer /s /q
 rd parser /s /q
 rd analysis /s /q
 rd node /s /q
-echo As pastas geradas pelo SableCC foram apagadas com sucesso.
