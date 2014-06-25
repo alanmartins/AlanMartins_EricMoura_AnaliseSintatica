@@ -5,55 +5,55 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AXouLogica extends PLogica
+public final class AExpXouItem extends PItem
 {
-    private PLogica _logica_;
+    private PItem _item_;
     private TXou _xou_;
-    private PRelacional _relacional_;
+    private PLogTermo _logTermo_;
 
-    public AXouLogica()
+    public AExpXouItem()
     {
         // Constructor
     }
 
-    public AXouLogica(
-        @SuppressWarnings("hiding") PLogica _logica_,
+    public AExpXouItem(
+        @SuppressWarnings("hiding") PItem _item_,
         @SuppressWarnings("hiding") TXou _xou_,
-        @SuppressWarnings("hiding") PRelacional _relacional_)
+        @SuppressWarnings("hiding") PLogTermo _logTermo_)
     {
         // Constructor
-        setLogica(_logica_);
+        setItem(_item_);
 
         setXou(_xou_);
 
-        setRelacional(_relacional_);
+        setLogTermo(_logTermo_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AXouLogica(
-            cloneNode(this._logica_),
+        return new AExpXouItem(
+            cloneNode(this._item_),
             cloneNode(this._xou_),
-            cloneNode(this._relacional_));
+            cloneNode(this._logTermo_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAXouLogica(this);
+        ((Analysis) sw).caseAExpXouItem(this);
     }
 
-    public PLogica getLogica()
+    public PItem getItem()
     {
-        return this._logica_;
+        return this._item_;
     }
 
-    public void setLogica(PLogica node)
+    public void setItem(PItem node)
     {
-        if(this._logica_ != null)
+        if(this._item_ != null)
         {
-            this._logica_.parent(null);
+            this._item_.parent(null);
         }
 
         if(node != null)
@@ -66,7 +66,7 @@ public final class AXouLogica extends PLogica
             node.parent(this);
         }
 
-        this._logica_ = node;
+        this._item_ = node;
     }
 
     public TXou getXou()
@@ -94,16 +94,16 @@ public final class AXouLogica extends PLogica
         this._xou_ = node;
     }
 
-    public PRelacional getRelacional()
+    public PLogTermo getLogTermo()
     {
-        return this._relacional_;
+        return this._logTermo_;
     }
 
-    public void setRelacional(PRelacional node)
+    public void setLogTermo(PLogTermo node)
     {
-        if(this._relacional_ != null)
+        if(this._logTermo_ != null)
         {
-            this._relacional_.parent(null);
+            this._logTermo_.parent(null);
         }
 
         if(node != null)
@@ -116,25 +116,25 @@ public final class AXouLogica extends PLogica
             node.parent(this);
         }
 
-        this._relacional_ = node;
+        this._logTermo_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._logica_)
+            + toString(this._item_)
             + toString(this._xou_)
-            + toString(this._relacional_);
+            + toString(this._logTermo_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._logica_ == child)
+        if(this._item_ == child)
         {
-            this._logica_ = null;
+            this._item_ = null;
             return;
         }
 
@@ -144,9 +144,9 @@ public final class AXouLogica extends PLogica
             return;
         }
 
-        if(this._relacional_ == child)
+        if(this._logTermo_ == child)
         {
-            this._relacional_ = null;
+            this._logTermo_ = null;
             return;
         }
 
@@ -157,9 +157,9 @@ public final class AXouLogica extends PLogica
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._logica_ == oldChild)
+        if(this._item_ == oldChild)
         {
-            setLogica((PLogica) newChild);
+            setItem((PItem) newChild);
             return;
         }
 
@@ -169,9 +169,9 @@ public final class AXouLogica extends PLogica
             return;
         }
 
-        if(this._relacional_ == oldChild)
+        if(this._logTermo_ == oldChild)
         {
-            setRelacional((PRelacional) newChild);
+            setLogTermo((PLogTermo) newChild);
             return;
         }
 

@@ -5,55 +5,55 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AELogica extends PLogica
+public final class AExpELogTermo extends PLogTermo
 {
-    private PLogica _logica_;
+    private PLogTermo _logTermo_;
     private TE _e_;
-    private PRelacional _relacional_;
+    private PLogFator _logFator_;
 
-    public AELogica()
+    public AExpELogTermo()
     {
         // Constructor
     }
 
-    public AELogica(
-        @SuppressWarnings("hiding") PLogica _logica_,
+    public AExpELogTermo(
+        @SuppressWarnings("hiding") PLogTermo _logTermo_,
         @SuppressWarnings("hiding") TE _e_,
-        @SuppressWarnings("hiding") PRelacional _relacional_)
+        @SuppressWarnings("hiding") PLogFator _logFator_)
     {
         // Constructor
-        setLogica(_logica_);
+        setLogTermo(_logTermo_);
 
         setE(_e_);
 
-        setRelacional(_relacional_);
+        setLogFator(_logFator_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AELogica(
-            cloneNode(this._logica_),
+        return new AExpELogTermo(
+            cloneNode(this._logTermo_),
             cloneNode(this._e_),
-            cloneNode(this._relacional_));
+            cloneNode(this._logFator_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAELogica(this);
+        ((Analysis) sw).caseAExpELogTermo(this);
     }
 
-    public PLogica getLogica()
+    public PLogTermo getLogTermo()
     {
-        return this._logica_;
+        return this._logTermo_;
     }
 
-    public void setLogica(PLogica node)
+    public void setLogTermo(PLogTermo node)
     {
-        if(this._logica_ != null)
+        if(this._logTermo_ != null)
         {
-            this._logica_.parent(null);
+            this._logTermo_.parent(null);
         }
 
         if(node != null)
@@ -66,7 +66,7 @@ public final class AELogica extends PLogica
             node.parent(this);
         }
 
-        this._logica_ = node;
+        this._logTermo_ = node;
     }
 
     public TE getE()
@@ -94,16 +94,16 @@ public final class AELogica extends PLogica
         this._e_ = node;
     }
 
-    public PRelacional getRelacional()
+    public PLogFator getLogFator()
     {
-        return this._relacional_;
+        return this._logFator_;
     }
 
-    public void setRelacional(PRelacional node)
+    public void setLogFator(PLogFator node)
     {
-        if(this._relacional_ != null)
+        if(this._logFator_ != null)
         {
-            this._relacional_.parent(null);
+            this._logFator_.parent(null);
         }
 
         if(node != null)
@@ -116,25 +116,25 @@ public final class AELogica extends PLogica
             node.parent(this);
         }
 
-        this._relacional_ = node;
+        this._logFator_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._logica_)
+            + toString(this._logTermo_)
             + toString(this._e_)
-            + toString(this._relacional_);
+            + toString(this._logFator_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._logica_ == child)
+        if(this._logTermo_ == child)
         {
-            this._logica_ = null;
+            this._logTermo_ = null;
             return;
         }
 
@@ -144,9 +144,9 @@ public final class AELogica extends PLogica
             return;
         }
 
-        if(this._relacional_ == child)
+        if(this._logFator_ == child)
         {
-            this._relacional_ = null;
+            this._logFator_ = null;
             return;
         }
 
@@ -157,9 +157,9 @@ public final class AELogica extends PLogica
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._logica_ == oldChild)
+        if(this._logTermo_ == oldChild)
         {
-            setLogica((PLogica) newChild);
+            setLogTermo((PLogTermo) newChild);
             return;
         }
 
@@ -169,9 +169,9 @@ public final class AELogica extends PLogica
             return;
         }
 
-        if(this._relacional_ == oldChild)
+        if(this._logFator_ == oldChild)
         {
-            setRelacional((PRelacional) newChild);
+            setLogFator((PLogFator) newChild);
             return;
         }
 

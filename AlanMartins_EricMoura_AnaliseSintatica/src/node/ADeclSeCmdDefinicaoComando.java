@@ -5,32 +5,36 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
+public final class ADeclSeCmdDefinicaoComando extends PDefinicaoComando
 {
-    private TEnquanto _enquanto_;
+    private TSe _se_;
     private TLPar _lPar_;
     private PExpLogica _expLogica_;
     private TRPar _rPar_;
-    private TFaca _faca_;
-    private TFimEnquanto _fimEnquanto_;
+    private TEntao _entao_;
+    private PComando _comando_;
+    private POpcionalSenaoSe _opcionalSenaoSe_;
+    private TFimSe _fimSe_;
     private TPontoVirgula _pontoVirgula_;
 
-    public ADeclEnquantoDefinicaoComando()
+    public ADeclSeCmdDefinicaoComando()
     {
         // Constructor
     }
 
-    public ADeclEnquantoDefinicaoComando(
-        @SuppressWarnings("hiding") TEnquanto _enquanto_,
+    public ADeclSeCmdDefinicaoComando(
+        @SuppressWarnings("hiding") TSe _se_,
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") TFaca _faca_,
-        @SuppressWarnings("hiding") TFimEnquanto _fimEnquanto_,
+        @SuppressWarnings("hiding") TEntao _entao_,
+        @SuppressWarnings("hiding") PComando _comando_,
+        @SuppressWarnings("hiding") POpcionalSenaoSe _opcionalSenaoSe_,
+        @SuppressWarnings("hiding") TFimSe _fimSe_,
         @SuppressWarnings("hiding") TPontoVirgula _pontoVirgula_)
     {
         // Constructor
-        setEnquanto(_enquanto_);
+        setSe(_se_);
 
         setLPar(_lPar_);
 
@@ -38,9 +42,13 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
 
         setRPar(_rPar_);
 
-        setFaca(_faca_);
+        setEntao(_entao_);
 
-        setFimEnquanto(_fimEnquanto_);
+        setComando(_comando_);
+
+        setOpcionalSenaoSe(_opcionalSenaoSe_);
+
+        setFimSe(_fimSe_);
 
         setPontoVirgula(_pontoVirgula_);
 
@@ -49,31 +57,33 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
     @Override
     public Object clone()
     {
-        return new ADeclEnquantoDefinicaoComando(
-            cloneNode(this._enquanto_),
+        return new ADeclSeCmdDefinicaoComando(
+            cloneNode(this._se_),
             cloneNode(this._lPar_),
             cloneNode(this._expLogica_),
             cloneNode(this._rPar_),
-            cloneNode(this._faca_),
-            cloneNode(this._fimEnquanto_),
+            cloneNode(this._entao_),
+            cloneNode(this._comando_),
+            cloneNode(this._opcionalSenaoSe_),
+            cloneNode(this._fimSe_),
             cloneNode(this._pontoVirgula_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADeclEnquantoDefinicaoComando(this);
+        ((Analysis) sw).caseADeclSeCmdDefinicaoComando(this);
     }
 
-    public TEnquanto getEnquanto()
+    public TSe getSe()
     {
-        return this._enquanto_;
+        return this._se_;
     }
 
-    public void setEnquanto(TEnquanto node)
+    public void setSe(TSe node)
     {
-        if(this._enquanto_ != null)
+        if(this._se_ != null)
         {
-            this._enquanto_.parent(null);
+            this._se_.parent(null);
         }
 
         if(node != null)
@@ -86,7 +96,7 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             node.parent(this);
         }
 
-        this._enquanto_ = node;
+        this._se_ = node;
     }
 
     public TLPar getLPar()
@@ -164,16 +174,16 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
         this._rPar_ = node;
     }
 
-    public TFaca getFaca()
+    public TEntao getEntao()
     {
-        return this._faca_;
+        return this._entao_;
     }
 
-    public void setFaca(TFaca node)
+    public void setEntao(TEntao node)
     {
-        if(this._faca_ != null)
+        if(this._entao_ != null)
         {
-            this._faca_.parent(null);
+            this._entao_.parent(null);
         }
 
         if(node != null)
@@ -186,19 +196,19 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             node.parent(this);
         }
 
-        this._faca_ = node;
+        this._entao_ = node;
     }
 
-    public TFimEnquanto getFimEnquanto()
+    public PComando getComando()
     {
-        return this._fimEnquanto_;
+        return this._comando_;
     }
 
-    public void setFimEnquanto(TFimEnquanto node)
+    public void setComando(PComando node)
     {
-        if(this._fimEnquanto_ != null)
+        if(this._comando_ != null)
         {
-            this._fimEnquanto_.parent(null);
+            this._comando_.parent(null);
         }
 
         if(node != null)
@@ -211,7 +221,57 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             node.parent(this);
         }
 
-        this._fimEnquanto_ = node;
+        this._comando_ = node;
+    }
+
+    public POpcionalSenaoSe getOpcionalSenaoSe()
+    {
+        return this._opcionalSenaoSe_;
+    }
+
+    public void setOpcionalSenaoSe(POpcionalSenaoSe node)
+    {
+        if(this._opcionalSenaoSe_ != null)
+        {
+            this._opcionalSenaoSe_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._opcionalSenaoSe_ = node;
+    }
+
+    public TFimSe getFimSe()
+    {
+        return this._fimSe_;
+    }
+
+    public void setFimSe(TFimSe node)
+    {
+        if(this._fimSe_ != null)
+        {
+            this._fimSe_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._fimSe_ = node;
     }
 
     public TPontoVirgula getPontoVirgula()
@@ -243,12 +303,14 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
     public String toString()
     {
         return ""
-            + toString(this._enquanto_)
+            + toString(this._se_)
             + toString(this._lPar_)
             + toString(this._expLogica_)
             + toString(this._rPar_)
-            + toString(this._faca_)
-            + toString(this._fimEnquanto_)
+            + toString(this._entao_)
+            + toString(this._comando_)
+            + toString(this._opcionalSenaoSe_)
+            + toString(this._fimSe_)
             + toString(this._pontoVirgula_);
     }
 
@@ -256,9 +318,9 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._enquanto_ == child)
+        if(this._se_ == child)
         {
-            this._enquanto_ = null;
+            this._se_ = null;
             return;
         }
 
@@ -280,15 +342,27 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             return;
         }
 
-        if(this._faca_ == child)
+        if(this._entao_ == child)
         {
-            this._faca_ = null;
+            this._entao_ = null;
             return;
         }
 
-        if(this._fimEnquanto_ == child)
+        if(this._comando_ == child)
         {
-            this._fimEnquanto_ = null;
+            this._comando_ = null;
+            return;
+        }
+
+        if(this._opcionalSenaoSe_ == child)
+        {
+            this._opcionalSenaoSe_ = null;
+            return;
+        }
+
+        if(this._fimSe_ == child)
+        {
+            this._fimSe_ = null;
             return;
         }
 
@@ -305,9 +379,9 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._enquanto_ == oldChild)
+        if(this._se_ == oldChild)
         {
-            setEnquanto((TEnquanto) newChild);
+            setSe((TSe) newChild);
             return;
         }
 
@@ -329,15 +403,27 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             return;
         }
 
-        if(this._faca_ == oldChild)
+        if(this._entao_ == oldChild)
         {
-            setFaca((TFaca) newChild);
+            setEntao((TEntao) newChild);
             return;
         }
 
-        if(this._fimEnquanto_ == oldChild)
+        if(this._comando_ == oldChild)
         {
-            setFimEnquanto((TFimEnquanto) newChild);
+            setComando((PComando) newChild);
+            return;
+        }
+
+        if(this._opcionalSenaoSe_ == oldChild)
+        {
+            setOpcionalSenaoSe((POpcionalSenaoSe) newChild);
+            return;
+        }
+
+        if(this._fimSe_ == oldChild)
+        {
+            setFimSe((TFimSe) newChild);
             return;
         }
 

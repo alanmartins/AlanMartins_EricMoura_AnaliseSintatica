@@ -5,50 +5,50 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANaoExpLogica extends PExpLogica
+public final class ASenaoCmdSenaoSe extends PSenaoSe
 {
-    private TNao _nao_;
-    private PLogica _logica_;
+    private TSenao _senao_;
+    private PComando _comando_;
 
-    public ANaoExpLogica()
+    public ASenaoCmdSenaoSe()
     {
         // Constructor
     }
 
-    public ANaoExpLogica(
-        @SuppressWarnings("hiding") TNao _nao_,
-        @SuppressWarnings("hiding") PLogica _logica_)
+    public ASenaoCmdSenaoSe(
+        @SuppressWarnings("hiding") TSenao _senao_,
+        @SuppressWarnings("hiding") PComando _comando_)
     {
         // Constructor
-        setNao(_nao_);
+        setSenao(_senao_);
 
-        setLogica(_logica_);
+        setComando(_comando_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANaoExpLogica(
-            cloneNode(this._nao_),
-            cloneNode(this._logica_));
+        return new ASenaoCmdSenaoSe(
+            cloneNode(this._senao_),
+            cloneNode(this._comando_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANaoExpLogica(this);
+        ((Analysis) sw).caseASenaoCmdSenaoSe(this);
     }
 
-    public TNao getNao()
+    public TSenao getSenao()
     {
-        return this._nao_;
+        return this._senao_;
     }
 
-    public void setNao(TNao node)
+    public void setSenao(TSenao node)
     {
-        if(this._nao_ != null)
+        if(this._senao_ != null)
         {
-            this._nao_.parent(null);
+            this._senao_.parent(null);
         }
 
         if(node != null)
@@ -61,19 +61,19 @@ public final class ANaoExpLogica extends PExpLogica
             node.parent(this);
         }
 
-        this._nao_ = node;
+        this._senao_ = node;
     }
 
-    public PLogica getLogica()
+    public PComando getComando()
     {
-        return this._logica_;
+        return this._comando_;
     }
 
-    public void setLogica(PLogica node)
+    public void setComando(PComando node)
     {
-        if(this._logica_ != null)
+        if(this._comando_ != null)
         {
-            this._logica_.parent(null);
+            this._comando_.parent(null);
         }
 
         if(node != null)
@@ -86,30 +86,30 @@ public final class ANaoExpLogica extends PExpLogica
             node.parent(this);
         }
 
-        this._logica_ = node;
+        this._comando_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._nao_)
-            + toString(this._logica_);
+            + toString(this._senao_)
+            + toString(this._comando_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._nao_ == child)
+        if(this._senao_ == child)
         {
-            this._nao_ = null;
+            this._senao_ = null;
             return;
         }
 
-        if(this._logica_ == child)
+        if(this._comando_ == child)
         {
-            this._logica_ = null;
+            this._comando_ = null;
             return;
         }
 
@@ -120,15 +120,15 @@ public final class ANaoExpLogica extends PExpLogica
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._nao_ == oldChild)
+        if(this._senao_ == oldChild)
         {
-            setNao((TNao) newChild);
+            setSenao((TSenao) newChild);
             return;
         }
 
-        if(this._logica_ == oldChild)
+        if(this._comando_ == oldChild)
         {
-            setLogica((PLogica) newChild);
+            setComando((PComando) newChild);
             return;
         }
 

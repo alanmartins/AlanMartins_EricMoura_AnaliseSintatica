@@ -8,7 +8,7 @@ import analysis.*;
 public final class AIgualRelacional extends PRelacional
 {
     private PExp _l_;
-    private TIgual _igual_;
+    private TIgualLog _igualLog_;
     private PExp _r_;
 
     public AIgualRelacional()
@@ -18,13 +18,13 @@ public final class AIgualRelacional extends PRelacional
 
     public AIgualRelacional(
         @SuppressWarnings("hiding") PExp _l_,
-        @SuppressWarnings("hiding") TIgual _igual_,
+        @SuppressWarnings("hiding") TIgualLog _igualLog_,
         @SuppressWarnings("hiding") PExp _r_)
     {
         // Constructor
         setL(_l_);
 
-        setIgual(_igual_);
+        setIgualLog(_igualLog_);
 
         setR(_r_);
 
@@ -35,7 +35,7 @@ public final class AIgualRelacional extends PRelacional
     {
         return new AIgualRelacional(
             cloneNode(this._l_),
-            cloneNode(this._igual_),
+            cloneNode(this._igualLog_),
             cloneNode(this._r_));
     }
 
@@ -69,16 +69,16 @@ public final class AIgualRelacional extends PRelacional
         this._l_ = node;
     }
 
-    public TIgual getIgual()
+    public TIgualLog getIgualLog()
     {
-        return this._igual_;
+        return this._igualLog_;
     }
 
-    public void setIgual(TIgual node)
+    public void setIgualLog(TIgualLog node)
     {
-        if(this._igual_ != null)
+        if(this._igualLog_ != null)
         {
-            this._igual_.parent(null);
+            this._igualLog_.parent(null);
         }
 
         if(node != null)
@@ -91,7 +91,7 @@ public final class AIgualRelacional extends PRelacional
             node.parent(this);
         }
 
-        this._igual_ = node;
+        this._igualLog_ = node;
     }
 
     public PExp getR()
@@ -124,7 +124,7 @@ public final class AIgualRelacional extends PRelacional
     {
         return ""
             + toString(this._l_)
-            + toString(this._igual_)
+            + toString(this._igualLog_)
             + toString(this._r_);
     }
 
@@ -138,9 +138,9 @@ public final class AIgualRelacional extends PRelacional
             return;
         }
 
-        if(this._igual_ == child)
+        if(this._igualLog_ == child)
         {
-            this._igual_ = null;
+            this._igualLog_ = null;
             return;
         }
 
@@ -163,9 +163,9 @@ public final class AIgualRelacional extends PRelacional
             return;
         }
 
-        if(this._igual_ == oldChild)
+        if(this._igualLog_ == oldChild)
         {
-            setIgual((TIgual) newChild);
+            setIgualLog((TIgualLog) newChild);
             return;
         }
 

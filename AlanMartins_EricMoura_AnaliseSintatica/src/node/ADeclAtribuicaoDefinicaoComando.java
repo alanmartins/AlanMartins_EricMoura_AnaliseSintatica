@@ -5,19 +5,19 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ACmdAtribuicaoDefinicaoComando extends PDefinicaoComando
+public final class ADeclAtribuicaoDefinicaoComando extends PDefinicaoComando
 {
     private PIdentificador _identificador_;
     private TAtribuicao _atribuicao_;
     private PExp _exp_;
     private TPontoVirgula _pontoVirgula_;
 
-    public ACmdAtribuicaoDefinicaoComando()
+    public ADeclAtribuicaoDefinicaoComando()
     {
         // Constructor
     }
 
-    public ACmdAtribuicaoDefinicaoComando(
+    public ADeclAtribuicaoDefinicaoComando(
         @SuppressWarnings("hiding") PIdentificador _identificador_,
         @SuppressWarnings("hiding") TAtribuicao _atribuicao_,
         @SuppressWarnings("hiding") PExp _exp_,
@@ -37,7 +37,7 @@ public final class ACmdAtribuicaoDefinicaoComando extends PDefinicaoComando
     @Override
     public Object clone()
     {
-        return new ACmdAtribuicaoDefinicaoComando(
+        return new ADeclAtribuicaoDefinicaoComando(
             cloneNode(this._identificador_),
             cloneNode(this._atribuicao_),
             cloneNode(this._exp_),
@@ -46,7 +46,7 @@ public final class ACmdAtribuicaoDefinicaoComando extends PDefinicaoComando
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseACmdAtribuicaoDefinicaoComando(this);
+        ((Analysis) sw).caseADeclAtribuicaoDefinicaoComando(this);
     }
 
     public PIdentificador getIdentificador()

@@ -5,55 +5,55 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AOuLogica extends PLogica
+public final class AExpOuExpLogica extends PExpLogica
 {
-    private PLogica _logica_;
+    private PExpLogica _expLogica_;
     private TOu _ou_;
-    private PRelacional _relacional_;
+    private PItem _item_;
 
-    public AOuLogica()
+    public AExpOuExpLogica()
     {
         // Constructor
     }
 
-    public AOuLogica(
-        @SuppressWarnings("hiding") PLogica _logica_,
+    public AExpOuExpLogica(
+        @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TOu _ou_,
-        @SuppressWarnings("hiding") PRelacional _relacional_)
+        @SuppressWarnings("hiding") PItem _item_)
     {
         // Constructor
-        setLogica(_logica_);
+        setExpLogica(_expLogica_);
 
         setOu(_ou_);
 
-        setRelacional(_relacional_);
+        setItem(_item_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AOuLogica(
-            cloneNode(this._logica_),
+        return new AExpOuExpLogica(
+            cloneNode(this._expLogica_),
             cloneNode(this._ou_),
-            cloneNode(this._relacional_));
+            cloneNode(this._item_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAOuLogica(this);
+        ((Analysis) sw).caseAExpOuExpLogica(this);
     }
 
-    public PLogica getLogica()
+    public PExpLogica getExpLogica()
     {
-        return this._logica_;
+        return this._expLogica_;
     }
 
-    public void setLogica(PLogica node)
+    public void setExpLogica(PExpLogica node)
     {
-        if(this._logica_ != null)
+        if(this._expLogica_ != null)
         {
-            this._logica_.parent(null);
+            this._expLogica_.parent(null);
         }
 
         if(node != null)
@@ -66,7 +66,7 @@ public final class AOuLogica extends PLogica
             node.parent(this);
         }
 
-        this._logica_ = node;
+        this._expLogica_ = node;
     }
 
     public TOu getOu()
@@ -94,16 +94,16 @@ public final class AOuLogica extends PLogica
         this._ou_ = node;
     }
 
-    public PRelacional getRelacional()
+    public PItem getItem()
     {
-        return this._relacional_;
+        return this._item_;
     }
 
-    public void setRelacional(PRelacional node)
+    public void setItem(PItem node)
     {
-        if(this._relacional_ != null)
+        if(this._item_ != null)
         {
-            this._relacional_.parent(null);
+            this._item_.parent(null);
         }
 
         if(node != null)
@@ -116,25 +116,25 @@ public final class AOuLogica extends PLogica
             node.parent(this);
         }
 
-        this._relacional_ = node;
+        this._item_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._logica_)
+            + toString(this._expLogica_)
             + toString(this._ou_)
-            + toString(this._relacional_);
+            + toString(this._item_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._logica_ == child)
+        if(this._expLogica_ == child)
         {
-            this._logica_ = null;
+            this._expLogica_ = null;
             return;
         }
 
@@ -144,9 +144,9 @@ public final class AOuLogica extends PLogica
             return;
         }
 
-        if(this._relacional_ == child)
+        if(this._item_ == child)
         {
-            this._relacional_ = null;
+            this._item_ = null;
             return;
         }
 
@@ -157,9 +157,9 @@ public final class AOuLogica extends PLogica
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._logica_ == oldChild)
+        if(this._expLogica_ == oldChild)
         {
-            setLogica((PLogica) newChild);
+            setExpLogica((PExpLogica) newChild);
             return;
         }
 
@@ -169,9 +169,9 @@ public final class AOuLogica extends PLogica
             return;
         }
 
-        if(this._relacional_ == oldChild)
+        if(this._item_ == oldChild)
         {
-            setRelacional((PRelacional) newChild);
+            setItem((PItem) newChild);
             return;
         }
 

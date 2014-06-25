@@ -2,7 +2,7 @@
 
 package node;
 
-public abstract class PExpArit extends Node
+public abstract class PLogTermo extends Node
 {
     // Empty body
 }

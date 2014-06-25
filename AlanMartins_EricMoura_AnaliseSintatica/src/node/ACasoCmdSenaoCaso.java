@@ -5,18 +5,18 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASenaoCaso extends PSenaoCaso
+public final class ACasoCmdSenaoCaso extends PSenaoCaso
 {
     private TSenao _senao_;
     private TDoisPontos _doisPontos_;
     private PComando _comando_;
 
-    public ASenaoCaso()
+    public ACasoCmdSenaoCaso()
     {
         // Constructor
     }
 
-    public ASenaoCaso(
+    public ACasoCmdSenaoCaso(
         @SuppressWarnings("hiding") TSenao _senao_,
         @SuppressWarnings("hiding") TDoisPontos _doisPontos_,
         @SuppressWarnings("hiding") PComando _comando_)
@@ -33,7 +33,7 @@ public final class ASenaoCaso extends PSenaoCaso
     @Override
     public Object clone()
     {
-        return new ASenaoCaso(
+        return new ACasoCmdSenaoCaso(
             cloneNode(this._senao_),
             cloneNode(this._doisPontos_),
             cloneNode(this._comando_));
@@ -41,7 +41,7 @@ public final class ASenaoCaso extends PSenaoCaso
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASenaoCaso(this);
+        ((Analysis) sw).caseACasoCmdSenaoCaso(this);
     }
 
     public TSenao getSenao()

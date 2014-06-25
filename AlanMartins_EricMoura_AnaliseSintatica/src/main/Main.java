@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PushbackReader;
+import java.util.Scanner;
 
 import parser.Parser;
 import lexer.Lexer;
@@ -15,11 +16,23 @@ import node.Token;
 
 public class Main {
      protected static Token tk = null;
-     //public static String nomeArq = "";
+     public static String nomeArq = "";
+     
      public static void main(String[] arguments) {
-          //nomeArq = arguments[0];
+         
+         if(! (arguments.length == 0)){
+             nomeArq = arguments[0];
+         }else{
+             Scanner sc = new Scanner(System.in);
+             System.out.print("Informe o caminho do arquivo fonte: ");
+             nomeArq = sc.nextLine();
+             sc.close();
+             if(nomeArq.isEmpty())                  
+                 nomeArq = "src\\doc\\teste.txt";
+         }
+          
           try {  
-                 File srcPath = new File("src\\doc\\teste.txt");
+                 File srcPath = new File(nomeArq);
                  FileInputStream entrada = new FileInputStream(srcPath);
                  Lexer lex =  new Lexer( new PushbackReader(new InputStreamReader(entrada), 1024));
                  Parser p = new Parser(lex);
@@ -31,8 +44,7 @@ public class Main {
           catch(Exception e) {
                   System.out.println(e.getMessage());
           }
-          
-          
+         
      }
     
      

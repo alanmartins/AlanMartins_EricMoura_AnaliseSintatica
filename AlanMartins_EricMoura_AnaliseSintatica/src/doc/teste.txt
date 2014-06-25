@@ -13,12 +13,12 @@ inicio
 	
 	
 	
-	enquanto(a >= 4) faca
-		a <- a - 1;
+	enquanto(nao (a >= 4 e b < 3 ou a == b)) faca
+		a <- - a + b;
 	fim enquanto;
 	
-	se (a = b) entao
-		se ( nao a <= (b*3) ou c >= b) entao
+	se (a == b) entao
+		se ( a < b e b == a ou a > 2) entao
 			a <- b + c * 2;
 		fim se;
 	senao
@@ -31,18 +31,17 @@ inicio
 	
 	para i de 1 passo 2 ate 10 faca
 		
-		avalie (a + 2)
-			caso 12: 
+		avalie ((b == a) / (a > 2))
+			caso 0: 
 				a <- a + c;
 			
-			caso 11:
+			caso 1:
 				b <- b - 1;
-				se ((a+b) >= b*a  xou (a*a)/2 = c/2) entao
-				
+				se ((a+b) >= b*a xou (a*a)/2 >= c/2) entao
+					a <- 34;
 				senao
-					// Aqui vazio esta dado erro. Fica esperando um comando
+					// Aqui vazio esta dando erro. Fica esperando um comando
 				fim se;
-			caso 10: 
 		senao : 
 			a <- a*a*a;
 		fim   avalie;

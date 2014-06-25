@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AFatorTermo extends PTermo
+public final class AItemOuExpLogica extends PExpLogica
 {
-    private PUnario _unario_;
+    private PItem _item_;
 
-    public AFatorTermo()
+    public AItemOuExpLogica()
     {
         // Constructor
     }
 
-    public AFatorTermo(
-        @SuppressWarnings("hiding") PUnario _unario_)
+    public AItemOuExpLogica(
+        @SuppressWarnings("hiding") PItem _item_)
     {
         // Constructor
-        setUnario(_unario_);
+        setItem(_item_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AFatorTermo(
-            cloneNode(this._unario_));
+        return new AItemOuExpLogica(
+            cloneNode(this._item_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAFatorTermo(this);
+        ((Analysis) sw).caseAItemOuExpLogica(this);
     }
 
-    public PUnario getUnario()
+    public PItem getItem()
     {
-        return this._unario_;
+        return this._item_;
     }
 
-    public void setUnario(PUnario node)
+    public void setItem(PItem node)
     {
-        if(this._unario_ != null)
+        if(this._item_ != null)
         {
-            this._unario_.parent(null);
+            this._item_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AFatorTermo extends PTermo
             node.parent(this);
         }
 
-        this._unario_ = node;
+        this._item_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._unario_);
+            + toString(this._item_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._unario_ == child)
+        if(this._item_ == child)
         {
-            this._unario_ = null;
+            this._item_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AFatorTermo extends PTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._unario_ == oldChild)
+        if(this._item_ == oldChild)
         {
-            setUnario((PUnario) newChild);
+            setItem((PItem) newChild);
             return;
         }
 

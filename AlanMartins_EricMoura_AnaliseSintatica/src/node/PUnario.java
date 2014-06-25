@@ -2,7 +2,7 @@
 
 package node;
 
-public abstract class PLogica extends Node
+public abstract class PUnario extends Node
 {
     // Empty body
 }

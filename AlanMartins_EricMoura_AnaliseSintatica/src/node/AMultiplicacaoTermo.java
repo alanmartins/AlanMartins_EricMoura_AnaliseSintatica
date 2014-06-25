@@ -9,7 +9,7 @@ public final class AMultiplicacaoTermo extends PTermo
 {
     private PTermo _termo_;
     private TMult _mult_;
-    private PFator _fator_;
+    private PUnario _unario_;
 
     public AMultiplicacaoTermo()
     {
@@ -19,14 +19,14 @@ public final class AMultiplicacaoTermo extends PTermo
     public AMultiplicacaoTermo(
         @SuppressWarnings("hiding") PTermo _termo_,
         @SuppressWarnings("hiding") TMult _mult_,
-        @SuppressWarnings("hiding") PFator _fator_)
+        @SuppressWarnings("hiding") PUnario _unario_)
     {
         // Constructor
         setTermo(_termo_);
 
         setMult(_mult_);
 
-        setFator(_fator_);
+        setUnario(_unario_);
 
     }
 
@@ -36,7 +36,7 @@ public final class AMultiplicacaoTermo extends PTermo
         return new AMultiplicacaoTermo(
             cloneNode(this._termo_),
             cloneNode(this._mult_),
-            cloneNode(this._fator_));
+            cloneNode(this._unario_));
     }
 
     public void apply(Switch sw)
@@ -94,16 +94,16 @@ public final class AMultiplicacaoTermo extends PTermo
         this._mult_ = node;
     }
 
-    public PFator getFator()
+    public PUnario getUnario()
     {
-        return this._fator_;
+        return this._unario_;
     }
 
-    public void setFator(PFator node)
+    public void setUnario(PUnario node)
     {
-        if(this._fator_ != null)
+        if(this._unario_ != null)
         {
-            this._fator_.parent(null);
+            this._unario_.parent(null);
         }
 
         if(node != null)
@@ -116,7 +116,7 @@ public final class AMultiplicacaoTermo extends PTermo
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._unario_ = node;
     }
 
     @Override
@@ -125,7 +125,7 @@ public final class AMultiplicacaoTermo extends PTermo
         return ""
             + toString(this._termo_)
             + toString(this._mult_)
-            + toString(this._fator_);
+            + toString(this._unario_);
     }
 
     @Override
@@ -144,9 +144,9 @@ public final class AMultiplicacaoTermo extends PTermo
             return;
         }
 
-        if(this._fator_ == child)
+        if(this._unario_ == child)
         {
-            this._fator_ = null;
+            this._unario_ = null;
             return;
         }
 
@@ -169,9 +169,9 @@ public final class AMultiplicacaoTermo extends PTermo
             return;
         }
 
-        if(this._fator_ == oldChild)
+        if(this._unario_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setUnario((PUnario) newChild);
             return;
         }
 

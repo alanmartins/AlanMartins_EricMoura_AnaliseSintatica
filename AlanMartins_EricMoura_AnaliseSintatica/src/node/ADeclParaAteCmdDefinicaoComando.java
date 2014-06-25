@@ -5,7 +5,7 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
+public final class ADeclParaAteCmdDefinicaoComando extends PDefinicaoComando
 {
     private TPara _para_;
     private PIdentificador _identificador_;
@@ -14,15 +14,16 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
     private TAte _ate_;
     private TNumInteiro _int_;
     private TFaca _faca_;
+    private PComando _comando_;
     private TFimPara _fimPara_;
     private TPontoVirgula _pontoVirgula_;
 
-    public ADeclParaAteDefinicaoComando()
+    public ADeclParaAteCmdDefinicaoComando()
     {
         // Constructor
     }
 
-    public ADeclParaAteDefinicaoComando(
+    public ADeclParaAteCmdDefinicaoComando(
         @SuppressWarnings("hiding") TPara _para_,
         @SuppressWarnings("hiding") PIdentificador _identificador_,
         @SuppressWarnings("hiding") TDe _de_,
@@ -30,6 +31,7 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         @SuppressWarnings("hiding") TAte _ate_,
         @SuppressWarnings("hiding") TNumInteiro _int_,
         @SuppressWarnings("hiding") TFaca _faca_,
+        @SuppressWarnings("hiding") PComando _comando_,
         @SuppressWarnings("hiding") TFimPara _fimPara_,
         @SuppressWarnings("hiding") TPontoVirgula _pontoVirgula_)
     {
@@ -48,6 +50,8 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
 
         setFaca(_faca_);
 
+        setComando(_comando_);
+
         setFimPara(_fimPara_);
 
         setPontoVirgula(_pontoVirgula_);
@@ -57,7 +61,7 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
     @Override
     public Object clone()
     {
-        return new ADeclParaAteDefinicaoComando(
+        return new ADeclParaAteCmdDefinicaoComando(
             cloneNode(this._para_),
             cloneNode(this._identificador_),
             cloneNode(this._de_),
@@ -65,13 +69,14 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             cloneNode(this._ate_),
             cloneNode(this._int_),
             cloneNode(this._faca_),
+            cloneNode(this._comando_),
             cloneNode(this._fimPara_),
             cloneNode(this._pontoVirgula_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADeclParaAteDefinicaoComando(this);
+        ((Analysis) sw).caseADeclParaAteCmdDefinicaoComando(this);
     }
 
     public TPara getPara()
@@ -249,6 +254,31 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         this._faca_ = node;
     }
 
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
+    }
+
     public TFimPara getFimPara()
     {
         return this._fimPara_;
@@ -310,6 +340,7 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             + toString(this._ate_)
             + toString(this._int_)
             + toString(this._faca_)
+            + toString(this._comando_)
             + toString(this._fimPara_)
             + toString(this._pontoVirgula_);
     }
@@ -357,6 +388,12 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         if(this._faca_ == child)
         {
             this._faca_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -418,6 +455,12 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         if(this._faca_ == oldChild)
         {
             setFaca((TFaca) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

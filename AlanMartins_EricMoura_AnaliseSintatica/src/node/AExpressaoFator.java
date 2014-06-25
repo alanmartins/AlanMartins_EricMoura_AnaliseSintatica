@@ -5,26 +5,26 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpFator extends PFator
+public final class AExpressaoFator extends PFator
 {
     private TLPar _lPar_;
-    private PExp _exp_;
+    private PExpLogica _expLogica_;
     private TRPar _rPar_;
 
-    public AExpFator()
+    public AExpressaoFator()
     {
         // Constructor
     }
 
-    public AExpFator(
+    public AExpressaoFator(
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PExp _exp_,
+        @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TRPar _rPar_)
     {
         // Constructor
         setLPar(_lPar_);
 
-        setExp(_exp_);
+        setExpLogica(_expLogica_);
 
         setRPar(_rPar_);
 
@@ -33,15 +33,15 @@ public final class AExpFator extends PFator
     @Override
     public Object clone()
     {
-        return new AExpFator(
+        return new AExpressaoFator(
             cloneNode(this._lPar_),
-            cloneNode(this._exp_),
+            cloneNode(this._expLogica_),
             cloneNode(this._rPar_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpFator(this);
+        ((Analysis) sw).caseAExpressaoFator(this);
     }
 
     public TLPar getLPar()
@@ -69,16 +69,16 @@ public final class AExpFator extends PFator
         this._lPar_ = node;
     }
 
-    public PExp getExp()
+    public PExpLogica getExpLogica()
     {
-        return this._exp_;
+        return this._expLogica_;
     }
 
-    public void setExp(PExp node)
+    public void setExpLogica(PExpLogica node)
     {
-        if(this._exp_ != null)
+        if(this._expLogica_ != null)
         {
-            this._exp_.parent(null);
+            this._expLogica_.parent(null);
         }
 
         if(node != null)
@@ -91,7 +91,7 @@ public final class AExpFator extends PFator
             node.parent(this);
         }
 
-        this._exp_ = node;
+        this._expLogica_ = node;
     }
 
     public TRPar getRPar()
@@ -124,7 +124,7 @@ public final class AExpFator extends PFator
     {
         return ""
             + toString(this._lPar_)
-            + toString(this._exp_)
+            + toString(this._expLogica_)
             + toString(this._rPar_);
     }
 
@@ -138,9 +138,9 @@ public final class AExpFator extends PFator
             return;
         }
 
-        if(this._exp_ == child)
+        if(this._expLogica_ == child)
         {
-            this._exp_ = null;
+            this._expLogica_ = null;
             return;
         }
 
@@ -163,9 +163,9 @@ public final class AExpFator extends PFator
             return;
         }
 
-        if(this._exp_ == oldChild)
+        if(this._expLogica_ == oldChild)
         {
-            setExp((PExp) newChild);
+            setExpLogica((PExpLogica) newChild);
             return;
         }
 

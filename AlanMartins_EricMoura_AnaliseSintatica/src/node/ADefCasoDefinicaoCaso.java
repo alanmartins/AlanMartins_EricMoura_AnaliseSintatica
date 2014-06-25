@@ -5,23 +5,21 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADefinicaoCaso extends PDefinicaoCaso
+public final class ADefCasoDefinicaoCaso extends PDefinicaoCaso
 {
     private TCaso _caso_;
     private PValor _valor_;
     private TDoisPontos _doisPontos_;
-    private PComando _comando_;
 
-    public ADefinicaoCaso()
+    public ADefCasoDefinicaoCaso()
     {
         // Constructor
     }
 
-    public ADefinicaoCaso(
+    public ADefCasoDefinicaoCaso(
         @SuppressWarnings("hiding") TCaso _caso_,
         @SuppressWarnings("hiding") PValor _valor_,
-        @SuppressWarnings("hiding") TDoisPontos _doisPontos_,
-        @SuppressWarnings("hiding") PComando _comando_)
+        @SuppressWarnings("hiding") TDoisPontos _doisPontos_)
     {
         // Constructor
         setCaso(_caso_);
@@ -30,23 +28,20 @@ public final class ADefinicaoCaso extends PDefinicaoCaso
 
         setDoisPontos(_doisPontos_);
 
-        setComando(_comando_);
-
     }
 
     @Override
     public Object clone()
     {
-        return new ADefinicaoCaso(
+        return new ADefCasoDefinicaoCaso(
             cloneNode(this._caso_),
             cloneNode(this._valor_),
-            cloneNode(this._doisPontos_),
-            cloneNode(this._comando_));
+            cloneNode(this._doisPontos_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADefinicaoCaso(this);
+        ((Analysis) sw).caseADefCasoDefinicaoCaso(this);
     }
 
     public TCaso getCaso()
@@ -124,39 +119,13 @@ public final class ADefinicaoCaso extends PDefinicaoCaso
         this._doisPontos_ = node;
     }
 
-    public PComando getComando()
-    {
-        return this._comando_;
-    }
-
-    public void setComando(PComando node)
-    {
-        if(this._comando_ != null)
-        {
-            this._comando_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._comando_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._caso_)
             + toString(this._valor_)
-            + toString(this._doisPontos_)
-            + toString(this._comando_);
+            + toString(this._doisPontos_);
     }
 
     @Override
@@ -178,12 +147,6 @@ public final class ADefinicaoCaso extends PDefinicaoCaso
         if(this._doisPontos_ == child)
         {
             this._doisPontos_ = null;
-            return;
-        }
-
-        if(this._comando_ == child)
-        {
-            this._comando_ = null;
             return;
         }
 
@@ -209,12 +172,6 @@ public final class ADefinicaoCaso extends PDefinicaoCaso
         if(this._doisPontos_ == oldChild)
         {
             setDoisPontos((TDoisPontos) newChild);
-            return;
-        }
-
-        if(this._comando_ == oldChild)
-        {
-            setComando((PComando) newChild);
             return;
         }
 

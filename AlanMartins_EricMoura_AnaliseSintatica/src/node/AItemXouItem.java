@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ATermoExpArit extends PExpArit
+public final class AItemXouItem extends PItem
 {
-    private PTermo _termo_;
+    private PLogTermo _logTermo_;
 
-    public ATermoExpArit()
+    public AItemXouItem()
     {
         // Constructor
     }
 
-    public ATermoExpArit(
-        @SuppressWarnings("hiding") PTermo _termo_)
+    public AItemXouItem(
+        @SuppressWarnings("hiding") PLogTermo _logTermo_)
     {
         // Constructor
-        setTermo(_termo_);
+        setLogTermo(_logTermo_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ATermoExpArit(
-            cloneNode(this._termo_));
+        return new AItemXouItem(
+            cloneNode(this._logTermo_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseATermoExpArit(this);
+        ((Analysis) sw).caseAItemXouItem(this);
     }
 
-    public PTermo getTermo()
+    public PLogTermo getLogTermo()
     {
-        return this._termo_;
+        return this._logTermo_;
     }
 
-    public void setTermo(PTermo node)
+    public void setLogTermo(PLogTermo node)
     {
-        if(this._termo_ != null)
+        if(this._logTermo_ != null)
         {
-            this._termo_.parent(null);
+            this._logTermo_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class ATermoExpArit extends PExpArit
             node.parent(this);
         }
 
-        this._termo_ = node;
+        this._logTermo_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._termo_);
+            + toString(this._logTermo_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._termo_ == child)
+        if(this._logTermo_ == child)
         {
-            this._termo_ = null;
+            this._logTermo_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class ATermoExpArit extends PExpArit
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._termo_ == oldChild)
+        if(this._logTermo_ == oldChild)
         {
-            setTermo((PTermo) newChild);
+            setLogTermo((PLogTermo) newChild);
             return;
         }
 

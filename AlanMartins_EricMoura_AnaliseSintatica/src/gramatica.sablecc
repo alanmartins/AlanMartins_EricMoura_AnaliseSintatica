@@ -107,62 +107,67 @@ Productions
  	
  	
  	
- 	
- 	
- 	
  	comando = {unico} definicao_comando | {multiplo} comando definicao_comando ;
 
-  	definicao_comando = {cmd_atribuicao} identificador atribuicao exp ponto_virgula 
-  			| {decl_leia}  leia  l_par  multiplo_id   identificador   r_par   ponto_virgula
-  			| {decl_escreva} escreva l_par multipla_exp exp r_par ponto_virgula
-			| {decl_avalie} avalie  l_par  exp  r_par  multiplo_caso  opcional_senao_caso  fim_avalie  ponto_virgula
-			| {decl_enquanto} enquanto  l_par  exp_logica  r_par  faca  comando fim_enquanto ponto_virgula
-			| {decl_repita} repita comando ate l_par exp_logica r_par ponto_virgula
-			| {decl_para_ate} para identificador de num_inteiro ate [int]:num_inteiro faca comando fim_para ponto_virgula
-			| {decl_para_passo} para identificador de num_inteiro passo [int]:num_inteiro ate [n_int]:num_inteiro faca comando fim_para ponto_virgula
-			| {decl_se} se l_par exp_logica r_par entao comando opcional_senao_se fim_se ponto_virgula
+  	definicao_comando = {decl_atribuicao} identificador atribuicao exp ponto_virgula 
+  			   		  | {decl_leia}  leia  l_par  multiplo_id   identificador   r_par   ponto_virgula
+  					  
+  					  | {decl_escreva} escreva l_par multipla_exp exp r_par ponto_virgula
+					  
+					  | {decl_avalie} avalie  l_par  exp  r_par  multiplo_caso  opcional_senao_caso  fim_avalie  ponto_virgula
+					  
+					  | {decl_enquanto_cmd} enquanto  l_par  exp_logica  r_par  faca  comando fim_enquanto ponto_virgula
+					  | {decl_enquanto} enquanto  l_par  exp_logica  r_par  faca  fim_enquanto ponto_virgula
+					  
+					  | {decl_repita_cmd} repita comando ate l_par exp_logica r_par ponto_virgula
+					  | {decl_repita} repita ate l_par exp_logica r_par ponto_virgula
+					  
+					  | {decl_para_ate_cmd} para identificador de num_inteiro ate [int]:num_inteiro faca comando fim_para ponto_virgula
+					  | {decl_para_ate} para identificador de num_inteiro ate [int]:num_inteiro faca fim_para ponto_virgula
+					  
+					  | {decl_para_passo_cmd} para identificador de num_inteiro passo [int]:num_inteiro ate [n_int]:num_inteiro faca comando fim_para ponto_virgula
+					  | {decl_para_passo} para identificador de num_inteiro passo [int]:num_inteiro ate [n_int]:num_inteiro faca fim_para ponto_virgula
+					  
+					  | {decl_se_cmd} se l_par exp_logica r_par entao comando opcional_senao_se fim_se ponto_virgula
+					  | {decl_se} se l_par exp_logica r_par entao opcional_senao_se fim_se ponto_virgula
 	;
 
 	opcional_senao_se = senao_se? ;
-	senao_se = senao comando ; 
+	senao_se = {senao_cmd} senao comando | {senao} senao ; 
 
 	opcional_senao_caso = senao_caso? ;
-	senao_caso = senao dois_pontos comando ; 
+	senao_caso = {caso_cmd} senao dois_pontos comando | {caso} senao dois_pontos ; 
 	 
 	multiplo_caso = definicao_caso* ;
-	definicao_caso = caso valor dois_pontos comando ;
+	definicao_caso = {def_caso_cmd} caso valor dois_pontos comando | {def_caso} caso valor dois_pontos;
 
 	multi_exp = exp virgula;
  	multipla_exp = multi_exp* ;
 	
-	
 
-	exp = {menos_exp} menos exp_arit | {exp_aritmetica} exp_arit ;
 	
-	exp_arit = {termo} termo | {mais} exp_arit mais termo | {menos} exp_arit menos termo;	
+	exp = {termo} termo | {mais} exp mais termo | {menos} exp menos termo ;
   	 
-  	termo = {fator} fator | {multiplicacao} termo mult fator | {divisao} termo div fator ;
+  	termo = {fator} unario | {multiplicacao} termo mult unario | {divisao} termo div unario ;
+  	
+  	unario = {menos_unario} menos fator | {fator} fator;
 
-  	fator = {identificador} id | {valor} valor | {exp} l_par  exp_arit  r_par;
+  	fator = {identificador} id | {valor} valor | {exp} l_par  exp  r_par | {expressao} l_par exp_logica r_par;
   	
   	
   	
-  	
-  	exp_logica = {nao} nao logica | {logica} logica;
-  	
-  	logica = {e}    	   logica e relacional
-    	   | {ou}   	   logica ou relacional
-    	   | {xou}  	   logica xou relacional
-    	   | {relacional}  relacional
-   	; 
-  	
-  	
-  	relacional =  {igual}        [l]:exp igual [r]:exp
-    		   	| {diferente}    [l]:exp diferente [r]:exp
-    		   	| {menor_igual}  [l]:exp menor_igual [r]:exp
-    		   	| {maior_igual}  [l]:exp maior_igual [r]:exp
-    		   	| {menor}        [l]:exp menor [r]:exp
-    		   	| {maior}        [l]:exp maior [r]:exp
-   	;
+  	exp_logica = {exp_ou} exp_logica ou item | {item_ou} item;
 
-	             
+		  item = {exp_xou} item xou log_termo | {item_xou} log_termo;
+	
+	 log_termo = {exp_e} log_termo e log_fator | {tem_e} log_fator;
+	 
+	 log_fator = {relacional} relacional  | {negacao} nao l_par exp_logica r_par;
+    
+    relacional = {igual}        [l]:exp   igual_log   [r]:exp |
+				 {diferente}    [l]:exp   diferente   [r]:exp |
+				 {menor}        [l]:exp   menor       [r]:exp |
+				 {maior}        [l]:exp   maior       [r]:exp |
+				 {menor_igual}  [l]:exp   menor_igual [r]:exp |
+				 {maior_igual}  [l]:exp   maior_igual [r]:exp
+	;           

@@ -5,31 +5,37 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
+public final class ADeclParaPassoCmdDefinicaoComando extends PDefinicaoComando
 {
     private TPara _para_;
     private PIdentificador _identificador_;
     private TDe _de_;
     private TNumInteiro _numInteiro_;
-    private TAte _ate_;
+    private TPasso _passo_;
     private TNumInteiro _int_;
+    private TAte _ate_;
+    private TNumInteiro _nInt_;
     private TFaca _faca_;
+    private PComando _comando_;
     private TFimPara _fimPara_;
     private TPontoVirgula _pontoVirgula_;
 
-    public ADeclParaAteDefinicaoComando()
+    public ADeclParaPassoCmdDefinicaoComando()
     {
         // Constructor
     }
 
-    public ADeclParaAteDefinicaoComando(
+    public ADeclParaPassoCmdDefinicaoComando(
         @SuppressWarnings("hiding") TPara _para_,
         @SuppressWarnings("hiding") PIdentificador _identificador_,
         @SuppressWarnings("hiding") TDe _de_,
         @SuppressWarnings("hiding") TNumInteiro _numInteiro_,
-        @SuppressWarnings("hiding") TAte _ate_,
+        @SuppressWarnings("hiding") TPasso _passo_,
         @SuppressWarnings("hiding") TNumInteiro _int_,
+        @SuppressWarnings("hiding") TAte _ate_,
+        @SuppressWarnings("hiding") TNumInteiro _nInt_,
         @SuppressWarnings("hiding") TFaca _faca_,
+        @SuppressWarnings("hiding") PComando _comando_,
         @SuppressWarnings("hiding") TFimPara _fimPara_,
         @SuppressWarnings("hiding") TPontoVirgula _pontoVirgula_)
     {
@@ -42,11 +48,17 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
 
         setNumInteiro(_numInteiro_);
 
-        setAte(_ate_);
+        setPasso(_passo_);
 
         setInt(_int_);
 
+        setAte(_ate_);
+
+        setNInt(_nInt_);
+
         setFaca(_faca_);
+
+        setComando(_comando_);
 
         setFimPara(_fimPara_);
 
@@ -57,21 +69,24 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
     @Override
     public Object clone()
     {
-        return new ADeclParaAteDefinicaoComando(
+        return new ADeclParaPassoCmdDefinicaoComando(
             cloneNode(this._para_),
             cloneNode(this._identificador_),
             cloneNode(this._de_),
             cloneNode(this._numInteiro_),
-            cloneNode(this._ate_),
+            cloneNode(this._passo_),
             cloneNode(this._int_),
+            cloneNode(this._ate_),
+            cloneNode(this._nInt_),
             cloneNode(this._faca_),
+            cloneNode(this._comando_),
             cloneNode(this._fimPara_),
             cloneNode(this._pontoVirgula_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADeclParaAteDefinicaoComando(this);
+        ((Analysis) sw).caseADeclParaPassoCmdDefinicaoComando(this);
     }
 
     public TPara getPara()
@@ -174,16 +189,16 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         this._numInteiro_ = node;
     }
 
-    public TAte getAte()
+    public TPasso getPasso()
     {
-        return this._ate_;
+        return this._passo_;
     }
 
-    public void setAte(TAte node)
+    public void setPasso(TPasso node)
     {
-        if(this._ate_ != null)
+        if(this._passo_ != null)
         {
-            this._ate_.parent(null);
+            this._passo_.parent(null);
         }
 
         if(node != null)
@@ -196,7 +211,7 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             node.parent(this);
         }
 
-        this._ate_ = node;
+        this._passo_ = node;
     }
 
     public TNumInteiro getInt()
@@ -224,6 +239,56 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         this._int_ = node;
     }
 
+    public TAte getAte()
+    {
+        return this._ate_;
+    }
+
+    public void setAte(TAte node)
+    {
+        if(this._ate_ != null)
+        {
+            this._ate_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._ate_ = node;
+    }
+
+    public TNumInteiro getNInt()
+    {
+        return this._nInt_;
+    }
+
+    public void setNInt(TNumInteiro node)
+    {
+        if(this._nInt_ != null)
+        {
+            this._nInt_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._nInt_ = node;
+    }
+
     public TFaca getFaca()
     {
         return this._faca_;
@@ -247,6 +312,31 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
         }
 
         this._faca_ = node;
+    }
+
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
     }
 
     public TFimPara getFimPara()
@@ -307,9 +397,12 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             + toString(this._identificador_)
             + toString(this._de_)
             + toString(this._numInteiro_)
-            + toString(this._ate_)
+            + toString(this._passo_)
             + toString(this._int_)
+            + toString(this._ate_)
+            + toString(this._nInt_)
             + toString(this._faca_)
+            + toString(this._comando_)
             + toString(this._fimPara_)
             + toString(this._pontoVirgula_);
     }
@@ -342,9 +435,9 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             return;
         }
 
-        if(this._ate_ == child)
+        if(this._passo_ == child)
         {
-            this._ate_ = null;
+            this._passo_ = null;
             return;
         }
 
@@ -354,9 +447,27 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             return;
         }
 
+        if(this._ate_ == child)
+        {
+            this._ate_ = null;
+            return;
+        }
+
+        if(this._nInt_ == child)
+        {
+            this._nInt_ = null;
+            return;
+        }
+
         if(this._faca_ == child)
         {
             this._faca_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -403,9 +514,9 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             return;
         }
 
-        if(this._ate_ == oldChild)
+        if(this._passo_ == oldChild)
         {
-            setAte((TAte) newChild);
+            setPasso((TPasso) newChild);
             return;
         }
 
@@ -415,9 +526,27 @@ public final class ADeclParaAteDefinicaoComando extends PDefinicaoComando
             return;
         }
 
+        if(this._ate_ == oldChild)
+        {
+            setAte((TAte) newChild);
+            return;
+        }
+
+        if(this._nInt_ == oldChild)
+        {
+            setNInt((TNumInteiro) newChild);
+            return;
+        }
+
         if(this._faca_ == oldChild)
         {
             setFaca((TFaca) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

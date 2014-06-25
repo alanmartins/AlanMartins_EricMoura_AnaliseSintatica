@@ -5,16 +5,16 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ARelacionalLogica extends PLogica
+public final class ARelacionalLogFator extends PLogFator
 {
     private PRelacional _relacional_;
 
-    public ARelacionalLogica()
+    public ARelacionalLogFator()
     {
         // Constructor
     }
 
-    public ARelacionalLogica(
+    public ARelacionalLogFator(
         @SuppressWarnings("hiding") PRelacional _relacional_)
     {
         // Constructor
@@ -25,13 +25,13 @@ public final class ARelacionalLogica extends PLogica
     @Override
     public Object clone()
     {
-        return new ARelacionalLogica(
+        return new ARelacionalLogFator(
             cloneNode(this._relacional_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseARelacionalLogica(this);
+        ((Analysis) sw).caseARelacionalLogFator(this);
     }
 
     public PRelacional getRelacional()

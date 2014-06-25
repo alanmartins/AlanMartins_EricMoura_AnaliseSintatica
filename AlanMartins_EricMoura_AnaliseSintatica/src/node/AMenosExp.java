@@ -5,24 +5,24 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMenosExpArit extends PExpArit
+public final class AMenosExp extends PExp
 {
-    private PExpArit _expArit_;
+    private PExp _exp_;
     private TMenos _menos_;
     private PTermo _termo_;
 
-    public AMenosExpArit()
+    public AMenosExp()
     {
         // Constructor
     }
 
-    public AMenosExpArit(
-        @SuppressWarnings("hiding") PExpArit _expArit_,
+    public AMenosExp(
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TMenos _menos_,
         @SuppressWarnings("hiding") PTermo _termo_)
     {
         // Constructor
-        setExpArit(_expArit_);
+        setExp(_exp_);
 
         setMenos(_menos_);
 
@@ -33,27 +33,27 @@ public final class AMenosExpArit extends PExpArit
     @Override
     public Object clone()
     {
-        return new AMenosExpArit(
-            cloneNode(this._expArit_),
+        return new AMenosExp(
+            cloneNode(this._exp_),
             cloneNode(this._menos_),
             cloneNode(this._termo_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMenosExpArit(this);
+        ((Analysis) sw).caseAMenosExp(this);
     }
 
-    public PExpArit getExpArit()
+    public PExp getExp()
     {
-        return this._expArit_;
+        return this._exp_;
     }
 
-    public void setExpArit(PExpArit node)
+    public void setExp(PExp node)
     {
-        if(this._expArit_ != null)
+        if(this._exp_ != null)
         {
-            this._expArit_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -66,7 +66,7 @@ public final class AMenosExpArit extends PExpArit
             node.parent(this);
         }
 
-        this._expArit_ = node;
+        this._exp_ = node;
     }
 
     public TMenos getMenos()
@@ -123,7 +123,7 @@ public final class AMenosExpArit extends PExpArit
     public String toString()
     {
         return ""
-            + toString(this._expArit_)
+            + toString(this._exp_)
             + toString(this._menos_)
             + toString(this._termo_);
     }
@@ -132,9 +132,9 @@ public final class AMenosExpArit extends PExpArit
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expArit_ == child)
+        if(this._exp_ == child)
         {
-            this._expArit_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -157,9 +157,9 @@ public final class AMenosExpArit extends PExpArit
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expArit_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setExpArit((PExpArit) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

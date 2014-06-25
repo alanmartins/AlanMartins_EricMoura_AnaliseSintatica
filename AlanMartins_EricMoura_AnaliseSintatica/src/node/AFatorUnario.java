@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpAritmeticaExp extends PExp
+public final class AFatorUnario extends PUnario
 {
-    private PExpArit _expArit_;
+    private PFator _fator_;
 
-    public AExpAritmeticaExp()
+    public AFatorUnario()
     {
         // Constructor
     }
 
-    public AExpAritmeticaExp(
-        @SuppressWarnings("hiding") PExpArit _expArit_)
+    public AFatorUnario(
+        @SuppressWarnings("hiding") PFator _fator_)
     {
         // Constructor
-        setExpArit(_expArit_);
+        setFator(_fator_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpAritmeticaExp(
-            cloneNode(this._expArit_));
+        return new AFatorUnario(
+            cloneNode(this._fator_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpAritmeticaExp(this);
+        ((Analysis) sw).caseAFatorUnario(this);
     }
 
-    public PExpArit getExpArit()
+    public PFator getFator()
     {
-        return this._expArit_;
+        return this._fator_;
     }
 
-    public void setExpArit(PExpArit node)
+    public void setFator(PFator node)
     {
-        if(this._expArit_ != null)
+        if(this._fator_ != null)
         {
-            this._expArit_.parent(null);
+            this._fator_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AExpAritmeticaExp extends PExp
             node.parent(this);
         }
 
-        this._expArit_ = node;
+        this._fator_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expArit_);
+            + toString(this._fator_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expArit_ == child)
+        if(this._fator_ == child)
         {
-            this._expArit_ = null;
+            this._fator_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AExpAritmeticaExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expArit_ == oldChild)
+        if(this._fator_ == oldChild)
         {
-            setExpArit((PExpArit) newChild);
+            setFator((PFator) newChild);
             return;
         }
 

@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AFatorTermo extends PTermo
+public final class ATermoExp extends PExp
 {
-    private PUnario _unario_;
+    private PTermo _termo_;
 
-    public AFatorTermo()
+    public ATermoExp()
     {
         // Constructor
     }
 
-    public AFatorTermo(
-        @SuppressWarnings("hiding") PUnario _unario_)
+    public ATermoExp(
+        @SuppressWarnings("hiding") PTermo _termo_)
     {
         // Constructor
-        setUnario(_unario_);
+        setTermo(_termo_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AFatorTermo(
-            cloneNode(this._unario_));
+        return new ATermoExp(
+            cloneNode(this._termo_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAFatorTermo(this);
+        ((Analysis) sw).caseATermoExp(this);
     }
 
-    public PUnario getUnario()
+    public PTermo getTermo()
     {
-        return this._unario_;
+        return this._termo_;
     }
 
-    public void setUnario(PUnario node)
+    public void setTermo(PTermo node)
     {
-        if(this._unario_ != null)
+        if(this._termo_ != null)
         {
-            this._unario_.parent(null);
+            this._termo_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AFatorTermo extends PTermo
             node.parent(this);
         }
 
-        this._unario_ = node;
+        this._termo_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._unario_);
+            + toString(this._termo_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._unario_ == child)
+        if(this._termo_ == child)
         {
-            this._unario_ = null;
+            this._termo_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AFatorTermo extends PTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._unario_ == oldChild)
+        if(this._termo_ == oldChild)
         {
-            setUnario((PUnario) newChild);
+            setTermo((PTermo) newChild);
             return;
         }
 

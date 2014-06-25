@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ALogicaExpLogica extends PExpLogica
+public final class ATemELogTermo extends PLogTermo
 {
-    private PLogica _logica_;
+    private PLogFator _logFator_;
 
-    public ALogicaExpLogica()
+    public ATemELogTermo()
     {
         // Constructor
     }
 
-    public ALogicaExpLogica(
-        @SuppressWarnings("hiding") PLogica _logica_)
+    public ATemELogTermo(
+        @SuppressWarnings("hiding") PLogFator _logFator_)
     {
         // Constructor
-        setLogica(_logica_);
+        setLogFator(_logFator_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ALogicaExpLogica(
-            cloneNode(this._logica_));
+        return new ATemELogTermo(
+            cloneNode(this._logFator_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseALogicaExpLogica(this);
+        ((Analysis) sw).caseATemELogTermo(this);
     }
 
-    public PLogica getLogica()
+    public PLogFator getLogFator()
     {
-        return this._logica_;
+        return this._logFator_;
     }
 
-    public void setLogica(PLogica node)
+    public void setLogFator(PLogFator node)
     {
-        if(this._logica_ != null)
+        if(this._logFator_ != null)
         {
-            this._logica_.parent(null);
+            this._logFator_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class ALogicaExpLogica extends PExpLogica
             node.parent(this);
         }
 
-        this._logica_ = node;
+        this._logFator_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._logica_);
+            + toString(this._logFator_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._logica_ == child)
+        if(this._logFator_ == child)
         {
-            this._logica_ = null;
+            this._logFator_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class ALogicaExpLogica extends PExpLogica
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._logica_ == oldChild)
+        if(this._logFator_ == oldChild)
         {
-            setLogica((PLogica) newChild);
+            setLogFator((PLogFator) newChild);
             return;
         }
 
