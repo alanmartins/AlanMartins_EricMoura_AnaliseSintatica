@@ -632,55 +632,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outADeclAvalieDefinicaoComando(node);
     }
 
-    public void inADeclEnquantoCmdDefinicaoComando(ADeclEnquantoCmdDefinicaoComando node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADeclEnquantoCmdDefinicaoComando(ADeclEnquantoCmdDefinicaoComando node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADeclEnquantoCmdDefinicaoComando(ADeclEnquantoCmdDefinicaoComando node)
-    {
-        inADeclEnquantoCmdDefinicaoComando(node);
-        if(node.getEnquanto() != null)
-        {
-            node.getEnquanto().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        if(node.getExpLogica() != null)
-        {
-            node.getExpLogica().apply(this);
-        }
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getFaca() != null)
-        {
-            node.getFaca().apply(this);
-        }
-        if(node.getComando() != null)
-        {
-            node.getComando().apply(this);
-        }
-        if(node.getFimEnquanto() != null)
-        {
-            node.getFimEnquanto().apply(this);
-        }
-        if(node.getPontoVirgula() != null)
-        {
-            node.getPontoVirgula().apply(this);
-        }
-        outADeclEnquantoCmdDefinicaoComando(node);
-    }
-
     public void inADeclEnquantoDefinicaoComando(ADeclEnquantoDefinicaoComando node)
     {
         defaultIn(node);
@@ -715,6 +666,10 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getFaca().apply(this);
         }
+        if(node.getComando() != null)
+        {
+            node.getComando().apply(this);
+        }
         if(node.getFimEnquanto() != null)
         {
             node.getFimEnquanto().apply(this);
@@ -724,51 +679,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getPontoVirgula().apply(this);
         }
         outADeclEnquantoDefinicaoComando(node);
-    }
-
-    public void inADeclRepitaCmdDefinicaoComando(ADeclRepitaCmdDefinicaoComando node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADeclRepitaCmdDefinicaoComando(ADeclRepitaCmdDefinicaoComando node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADeclRepitaCmdDefinicaoComando(ADeclRepitaCmdDefinicaoComando node)
-    {
-        inADeclRepitaCmdDefinicaoComando(node);
-        if(node.getRepita() != null)
-        {
-            node.getRepita().apply(this);
-        }
-        if(node.getComando() != null)
-        {
-            node.getComando().apply(this);
-        }
-        if(node.getAte() != null)
-        {
-            node.getAte().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        if(node.getExpLogica() != null)
-        {
-            node.getExpLogica().apply(this);
-        }
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getPontoVirgula() != null)
-        {
-            node.getPontoVirgula().apply(this);
-        }
-        outADeclRepitaCmdDefinicaoComando(node);
     }
 
     public void inADeclRepitaDefinicaoComando(ADeclRepitaDefinicaoComando node)
@@ -788,6 +698,10 @@ public class DepthFirstAdapter extends AnalysisAdapter
         if(node.getRepita() != null)
         {
             node.getRepita().apply(this);
+        }
+        if(node.getComando() != null)
+        {
+            node.getComando().apply(this);
         }
         if(node.getAte() != null)
         {
@@ -810,63 +724,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getPontoVirgula().apply(this);
         }
         outADeclRepitaDefinicaoComando(node);
-    }
-
-    public void inADeclParaAteCmdDefinicaoComando(ADeclParaAteCmdDefinicaoComando node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADeclParaAteCmdDefinicaoComando(ADeclParaAteCmdDefinicaoComando node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADeclParaAteCmdDefinicaoComando(ADeclParaAteCmdDefinicaoComando node)
-    {
-        inADeclParaAteCmdDefinicaoComando(node);
-        if(node.getPara() != null)
-        {
-            node.getPara().apply(this);
-        }
-        if(node.getIdentificador() != null)
-        {
-            node.getIdentificador().apply(this);
-        }
-        if(node.getDe() != null)
-        {
-            node.getDe().apply(this);
-        }
-        if(node.getNumInteiro() != null)
-        {
-            node.getNumInteiro().apply(this);
-        }
-        if(node.getAte() != null)
-        {
-            node.getAte().apply(this);
-        }
-        if(node.getInt() != null)
-        {
-            node.getInt().apply(this);
-        }
-        if(node.getFaca() != null)
-        {
-            node.getFaca().apply(this);
-        }
-        if(node.getComando() != null)
-        {
-            node.getComando().apply(this);
-        }
-        if(node.getFimPara() != null)
-        {
-            node.getFimPara().apply(this);
-        }
-        if(node.getPontoVirgula() != null)
-        {
-            node.getPontoVirgula().apply(this);
-        }
-        outADeclParaAteCmdDefinicaoComando(node);
     }
 
     public void inADeclParaAteDefinicaoComando(ADeclParaAteDefinicaoComando node)
@@ -911,67 +768,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getFaca().apply(this);
         }
-        if(node.getFimPara() != null)
-        {
-            node.getFimPara().apply(this);
-        }
-        if(node.getPontoVirgula() != null)
-        {
-            node.getPontoVirgula().apply(this);
-        }
-        outADeclParaAteDefinicaoComando(node);
-    }
-
-    public void inADeclParaPassoCmdDefinicaoComando(ADeclParaPassoCmdDefinicaoComando node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADeclParaPassoCmdDefinicaoComando(ADeclParaPassoCmdDefinicaoComando node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADeclParaPassoCmdDefinicaoComando(ADeclParaPassoCmdDefinicaoComando node)
-    {
-        inADeclParaPassoCmdDefinicaoComando(node);
-        if(node.getPara() != null)
-        {
-            node.getPara().apply(this);
-        }
-        if(node.getIdentificador() != null)
-        {
-            node.getIdentificador().apply(this);
-        }
-        if(node.getDe() != null)
-        {
-            node.getDe().apply(this);
-        }
-        if(node.getNumInteiro() != null)
-        {
-            node.getNumInteiro().apply(this);
-        }
-        if(node.getPasso() != null)
-        {
-            node.getPasso().apply(this);
-        }
-        if(node.getInt() != null)
-        {
-            node.getInt().apply(this);
-        }
-        if(node.getAte() != null)
-        {
-            node.getAte().apply(this);
-        }
-        if(node.getNInt() != null)
-        {
-            node.getNInt().apply(this);
-        }
-        if(node.getFaca() != null)
-        {
-            node.getFaca().apply(this);
-        }
         if(node.getComando() != null)
         {
             node.getComando().apply(this);
@@ -984,7 +780,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getPontoVirgula().apply(this);
         }
-        outADeclParaPassoCmdDefinicaoComando(node);
+        outADeclParaAteDefinicaoComando(node);
     }
 
     public void inADeclParaPassoDefinicaoComando(ADeclParaPassoDefinicaoComando node)
@@ -1037,6 +833,10 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getFaca().apply(this);
         }
+        if(node.getComando() != null)
+        {
+            node.getComando().apply(this);
+        }
         if(node.getFimPara() != null)
         {
             node.getFimPara().apply(this);
@@ -1046,59 +846,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getPontoVirgula().apply(this);
         }
         outADeclParaPassoDefinicaoComando(node);
-    }
-
-    public void inADeclSeCmdDefinicaoComando(ADeclSeCmdDefinicaoComando node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADeclSeCmdDefinicaoComando(ADeclSeCmdDefinicaoComando node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADeclSeCmdDefinicaoComando(ADeclSeCmdDefinicaoComando node)
-    {
-        inADeclSeCmdDefinicaoComando(node);
-        if(node.getSe() != null)
-        {
-            node.getSe().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        if(node.getExpLogica() != null)
-        {
-            node.getExpLogica().apply(this);
-        }
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getEntao() != null)
-        {
-            node.getEntao().apply(this);
-        }
-        if(node.getComando() != null)
-        {
-            node.getComando().apply(this);
-        }
-        if(node.getOpcionalSenaoSe() != null)
-        {
-            node.getOpcionalSenaoSe().apply(this);
-        }
-        if(node.getFimSe() != null)
-        {
-            node.getFimSe().apply(this);
-        }
-        if(node.getPontoVirgula() != null)
-        {
-            node.getPontoVirgula().apply(this);
-        }
-        outADeclSeCmdDefinicaoComando(node);
     }
 
     public void inADeclSeDefinicaoComando(ADeclSeDefinicaoComando node)
@@ -1134,6 +881,10 @@ public class DepthFirstAdapter extends AnalysisAdapter
         if(node.getEntao() != null)
         {
             node.getEntao().apply(this);
+        }
+        if(node.getComando() != null)
+        {
+            node.getComando().apply(this);
         }
         if(node.getOpcionalSenaoSe() != null)
         {
@@ -1171,20 +922,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAOpcionalSenaoSe(node);
     }
 
-    public void inASenaoCmdSenaoSe(ASenaoCmdSenaoSe node)
+    public void inASenaoSe(ASenaoSe node)
     {
         defaultIn(node);
     }
 
-    public void outASenaoCmdSenaoSe(ASenaoCmdSenaoSe node)
+    public void outASenaoSe(ASenaoSe node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASenaoCmdSenaoSe(ASenaoCmdSenaoSe node)
+    public void caseASenaoSe(ASenaoSe node)
     {
-        inASenaoCmdSenaoSe(node);
+        inASenaoSe(node);
         if(node.getSenao() != null)
         {
             node.getSenao().apply(this);
@@ -1193,28 +944,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getComando().apply(this);
         }
-        outASenaoCmdSenaoSe(node);
-    }
-
-    public void inASenaoSenaoSe(ASenaoSenaoSe node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASenaoSenaoSe(ASenaoSenaoSe node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASenaoSenaoSe(ASenaoSenaoSe node)
-    {
-        inASenaoSenaoSe(node);
-        if(node.getSenao() != null)
-        {
-            node.getSenao().apply(this);
-        }
-        outASenaoSenaoSe(node);
+        outASenaoSe(node);
     }
 
     public void inAOpcionalSenaoCaso(AOpcionalSenaoCaso node)
@@ -1238,20 +968,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAOpcionalSenaoCaso(node);
     }
 
-    public void inACasoCmdSenaoCaso(ACasoCmdSenaoCaso node)
+    public void inASenaoCaso(ASenaoCaso node)
     {
         defaultIn(node);
     }
 
-    public void outACasoCmdSenaoCaso(ACasoCmdSenaoCaso node)
+    public void outASenaoCaso(ASenaoCaso node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseACasoCmdSenaoCaso(ACasoCmdSenaoCaso node)
+    public void caseASenaoCaso(ASenaoCaso node)
     {
-        inACasoCmdSenaoCaso(node);
+        inASenaoCaso(node);
         if(node.getSenao() != null)
         {
             node.getSenao().apply(this);
@@ -1264,32 +994,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getComando().apply(this);
         }
-        outACasoCmdSenaoCaso(node);
-    }
-
-    public void inACasoSenaoCaso(ACasoSenaoCaso node)
-    {
-        defaultIn(node);
-    }
-
-    public void outACasoSenaoCaso(ACasoSenaoCaso node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseACasoSenaoCaso(ACasoSenaoCaso node)
-    {
-        inACasoSenaoCaso(node);
-        if(node.getSenao() != null)
-        {
-            node.getSenao().apply(this);
-        }
-        if(node.getDoisPontos() != null)
-        {
-            node.getDoisPontos().apply(this);
-        }
-        outACasoSenaoCaso(node);
+        outASenaoCaso(node);
     }
 
     public void inAMultiploCaso(AMultiploCaso node)
@@ -1316,20 +1021,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAMultiploCaso(node);
     }
 
-    public void inADefCasoCmdDefinicaoCaso(ADefCasoCmdDefinicaoCaso node)
+    public void inADefinicaoCaso(ADefinicaoCaso node)
     {
         defaultIn(node);
     }
 
-    public void outADefCasoCmdDefinicaoCaso(ADefCasoCmdDefinicaoCaso node)
+    public void outADefinicaoCaso(ADefinicaoCaso node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseADefCasoCmdDefinicaoCaso(ADefCasoCmdDefinicaoCaso node)
+    public void caseADefinicaoCaso(ADefinicaoCaso node)
     {
-        inADefCasoCmdDefinicaoCaso(node);
+        inADefinicaoCaso(node);
         if(node.getCaso() != null)
         {
             node.getCaso().apply(this);
@@ -1346,36 +1051,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getComando().apply(this);
         }
-        outADefCasoCmdDefinicaoCaso(node);
-    }
-
-    public void inADefCasoDefinicaoCaso(ADefCasoDefinicaoCaso node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADefCasoDefinicaoCaso(ADefCasoDefinicaoCaso node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADefCasoDefinicaoCaso(ADefCasoDefinicaoCaso node)
-    {
-        inADefCasoDefinicaoCaso(node);
-        if(node.getCaso() != null)
-        {
-            node.getCaso().apply(this);
-        }
-        if(node.getValor() != null)
-        {
-            node.getValor().apply(this);
-        }
-        if(node.getDoisPontos() != null)
-        {
-            node.getDoisPontos().apply(this);
-        }
-        outADefCasoDefinicaoCaso(node);
+        outADefinicaoCaso(node);
     }
 
     public void inAMultiExp(AMultiExp node)

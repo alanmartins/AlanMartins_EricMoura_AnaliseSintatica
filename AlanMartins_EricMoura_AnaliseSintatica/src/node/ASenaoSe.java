@@ -5,33 +5,38 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASenaoSenaoSe extends PSenaoSe
+public final class ASenaoSe extends PSenaoSe
 {
     private TSenao _senao_;
+    private PComando _comando_;
 
-    public ASenaoSenaoSe()
+    public ASenaoSe()
     {
         // Constructor
     }
 
-    public ASenaoSenaoSe(
-        @SuppressWarnings("hiding") TSenao _senao_)
+    public ASenaoSe(
+        @SuppressWarnings("hiding") TSenao _senao_,
+        @SuppressWarnings("hiding") PComando _comando_)
     {
         // Constructor
         setSenao(_senao_);
+
+        setComando(_comando_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ASenaoSenaoSe(
-            cloneNode(this._senao_));
+        return new ASenaoSe(
+            cloneNode(this._senao_),
+            cloneNode(this._comando_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASenaoSenaoSe(this);
+        ((Analysis) sw).caseASenaoSe(this);
     }
 
     public TSenao getSenao()
@@ -59,11 +64,37 @@ public final class ASenaoSenaoSe extends PSenaoSe
         this._senao_ = node;
     }
 
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._senao_);
+            + toString(this._senao_)
+            + toString(this._comando_);
     }
 
     @Override
@@ -73,6 +104,12 @@ public final class ASenaoSenaoSe extends PSenaoSe
         if(this._senao_ == child)
         {
             this._senao_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -86,6 +123,12 @@ public final class ASenaoSenaoSe extends PSenaoSe
         if(this._senao_ == oldChild)
         {
             setSenao((TSenao) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

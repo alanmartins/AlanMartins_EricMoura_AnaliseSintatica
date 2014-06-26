@@ -174,17 +174,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseADeclEnquantoCmdDefinicaoComando(ADeclEnquantoCmdDefinicaoComando node)
-    {
-        defaultCase(node);
-    }
-
     public void caseADeclEnquantoDefinicaoComando(ADeclEnquantoDefinicaoComando node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADeclRepitaCmdDefinicaoComando(ADeclRepitaCmdDefinicaoComando node)
     {
         defaultCase(node);
     }
@@ -194,27 +184,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseADeclParaAteCmdDefinicaoComando(ADeclParaAteCmdDefinicaoComando node)
-    {
-        defaultCase(node);
-    }
-
     public void caseADeclParaAteDefinicaoComando(ADeclParaAteDefinicaoComando node)
     {
         defaultCase(node);
     }
 
-    public void caseADeclParaPassoCmdDefinicaoComando(ADeclParaPassoCmdDefinicaoComando node)
-    {
-        defaultCase(node);
-    }
-
     public void caseADeclParaPassoDefinicaoComando(ADeclParaPassoDefinicaoComando node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADeclSeCmdDefinicaoComando(ADeclSeCmdDefinicaoComando node)
     {
         defaultCase(node);
     }
@@ -229,12 +204,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseASenaoCmdSenaoSe(ASenaoCmdSenaoSe node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseASenaoSenaoSe(ASenaoSenaoSe node)
+    public void caseASenaoSe(ASenaoSe node)
     {
         defaultCase(node);
     }
@@ -244,12 +214,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseACasoCmdSenaoCaso(ACasoCmdSenaoCaso node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseACasoSenaoCaso(ACasoSenaoCaso node)
+    public void caseASenaoCaso(ASenaoCaso node)
     {
         defaultCase(node);
     }
@@ -259,12 +224,7 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseADefCasoCmdDefinicaoCaso(ADefCasoCmdDefinicaoCaso node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseADefCasoDefinicaoCaso(ADefCasoDefinicaoCaso node)
+    public void caseADefinicaoCaso(ADefinicaoCaso node)
     {
         defaultCase(node);
     }

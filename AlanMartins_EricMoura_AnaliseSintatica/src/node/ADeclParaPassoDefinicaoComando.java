@@ -16,6 +16,7 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
     private TAte _ate_;
     private TNumInteiro _nInt_;
     private TFaca _faca_;
+    private PComando _comando_;
     private TFimPara _fimPara_;
     private TPontoVirgula _pontoVirgula_;
 
@@ -34,6 +35,7 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
         @SuppressWarnings("hiding") TAte _ate_,
         @SuppressWarnings("hiding") TNumInteiro _nInt_,
         @SuppressWarnings("hiding") TFaca _faca_,
+        @SuppressWarnings("hiding") PComando _comando_,
         @SuppressWarnings("hiding") TFimPara _fimPara_,
         @SuppressWarnings("hiding") TPontoVirgula _pontoVirgula_)
     {
@@ -56,6 +58,8 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
 
         setFaca(_faca_);
 
+        setComando(_comando_);
+
         setFimPara(_fimPara_);
 
         setPontoVirgula(_pontoVirgula_);
@@ -75,6 +79,7 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
             cloneNode(this._ate_),
             cloneNode(this._nInt_),
             cloneNode(this._faca_),
+            cloneNode(this._comando_),
             cloneNode(this._fimPara_),
             cloneNode(this._pontoVirgula_));
     }
@@ -309,6 +314,31 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
         this._faca_ = node;
     }
 
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
+    }
+
     public TFimPara getFimPara()
     {
         return this._fimPara_;
@@ -372,6 +402,7 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
             + toString(this._ate_)
             + toString(this._nInt_)
             + toString(this._faca_)
+            + toString(this._comando_)
             + toString(this._fimPara_)
             + toString(this._pontoVirgula_);
     }
@@ -431,6 +462,12 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
         if(this._faca_ == child)
         {
             this._faca_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -504,6 +541,12 @@ public final class ADeclParaPassoDefinicaoComando extends PDefinicaoComando
         if(this._faca_ == oldChild)
         {
             setFaca((TFaca) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

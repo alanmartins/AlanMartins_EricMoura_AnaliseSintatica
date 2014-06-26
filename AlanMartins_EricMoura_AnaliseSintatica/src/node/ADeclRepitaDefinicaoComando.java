@@ -8,6 +8,7 @@ import analysis.*;
 public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
 {
     private TRepita _repita_;
+    private PComando _comando_;
     private TAte _ate_;
     private TLPar _lPar_;
     private PExpLogica _expLogica_;
@@ -21,6 +22,7 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
 
     public ADeclRepitaDefinicaoComando(
         @SuppressWarnings("hiding") TRepita _repita_,
+        @SuppressWarnings("hiding") PComando _comando_,
         @SuppressWarnings("hiding") TAte _ate_,
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
@@ -29,6 +31,8 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
     {
         // Constructor
         setRepita(_repita_);
+
+        setComando(_comando_);
 
         setAte(_ate_);
 
@@ -47,6 +51,7 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
     {
         return new ADeclRepitaDefinicaoComando(
             cloneNode(this._repita_),
+            cloneNode(this._comando_),
             cloneNode(this._ate_),
             cloneNode(this._lPar_),
             cloneNode(this._expLogica_),
@@ -82,6 +87,31 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
         }
 
         this._repita_ = node;
+    }
+
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
     }
 
     public TAte getAte()
@@ -214,6 +244,7 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
     {
         return ""
             + toString(this._repita_)
+            + toString(this._comando_)
             + toString(this._ate_)
             + toString(this._lPar_)
             + toString(this._expLogica_)
@@ -228,6 +259,12 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
         if(this._repita_ == child)
         {
             this._repita_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -271,6 +308,12 @@ public final class ADeclRepitaDefinicaoComando extends PDefinicaoComando
         if(this._repita_ == oldChild)
         {
             setRepita((TRepita) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

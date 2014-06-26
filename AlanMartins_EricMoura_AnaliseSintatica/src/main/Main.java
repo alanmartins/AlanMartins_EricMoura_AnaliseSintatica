@@ -23,23 +23,18 @@ public class Main {
          if(! (arguments.length == 0)){
              nomeArq = arguments[0];
          }else{
-             Scanner sc = new Scanner(System.in);
-             System.out.print("Informe o caminho do arquivo fonte: ");
-             nomeArq = sc.nextLine();
-             sc.close();
-             if(nomeArq.isEmpty())                  
-                 nomeArq = "src\\doc\\teste.txt";
+             nomeArq = "src\\doc\\testeSintatico.txt";
          }
           
           try {  
                  File srcPath = new File(nomeArq);
                  FileInputStream entrada = new FileInputStream(srcPath);
                  Lexer lex =  new Lexer( new PushbackReader(new InputStreamReader(entrada), 1024));
-                 Parser p = new Parser(lex);
+                 //analiseLexica(lex);
                  
+                 Parser p = new Parser(lex);           
                  Start ast = p.parse();
-                 
-                 //analiseLexica(lex);   
+            
           }
           catch(Exception e) {
                   System.out.println(e.getMessage());

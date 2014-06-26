@@ -12,6 +12,7 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
     private PExpLogica _expLogica_;
     private TRPar _rPar_;
     private TFaca _faca_;
+    private PComando _comando_;
     private TFimEnquanto _fimEnquanto_;
     private TPontoVirgula _pontoVirgula_;
 
@@ -26,6 +27,7 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TRPar _rPar_,
         @SuppressWarnings("hiding") TFaca _faca_,
+        @SuppressWarnings("hiding") PComando _comando_,
         @SuppressWarnings("hiding") TFimEnquanto _fimEnquanto_,
         @SuppressWarnings("hiding") TPontoVirgula _pontoVirgula_)
     {
@@ -39,6 +41,8 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
         setRPar(_rPar_);
 
         setFaca(_faca_);
+
+        setComando(_comando_);
 
         setFimEnquanto(_fimEnquanto_);
 
@@ -55,6 +59,7 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             cloneNode(this._expLogica_),
             cloneNode(this._rPar_),
             cloneNode(this._faca_),
+            cloneNode(this._comando_),
             cloneNode(this._fimEnquanto_),
             cloneNode(this._pontoVirgula_));
     }
@@ -189,6 +194,31 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
         this._faca_ = node;
     }
 
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
+    }
+
     public TFimEnquanto getFimEnquanto()
     {
         return this._fimEnquanto_;
@@ -248,6 +278,7 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
             + toString(this._expLogica_)
             + toString(this._rPar_)
             + toString(this._faca_)
+            + toString(this._comando_)
             + toString(this._fimEnquanto_)
             + toString(this._pontoVirgula_);
     }
@@ -283,6 +314,12 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
         if(this._faca_ == child)
         {
             this._faca_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -332,6 +369,12 @@ public final class ADeclEnquantoDefinicaoComando extends PDefinicaoComando
         if(this._faca_ == oldChild)
         {
             setFaca((TFaca) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

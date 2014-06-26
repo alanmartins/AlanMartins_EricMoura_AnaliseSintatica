@@ -40,7 +40,9 @@ inicio
 				se ((a+b) >= b*a xou (a*a)/2 >= c/2) entao
 					a <- 34;
 				senao
-					// Aqui vazio esta dando erro. Fica esperando um comando
+					enquanto (a + 3 >= b) faca
+						a <- a - 2;
+					fim enquanto;
 				fim se;
 		senao : 
 			a <- a*a*a;
