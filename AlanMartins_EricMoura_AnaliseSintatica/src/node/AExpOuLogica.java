@@ -5,55 +5,55 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADiferenteRelacional extends PRelacional
+public final class AExpOuLogica extends PLogica
 {
-    private PExp _l_;
-    private TDiferente _diferente_;
-    private PExp _r_;
+    private PLogica _logica_;
+    private TOu _ou_;
+    private PItem _item_;
 
-    public ADiferenteRelacional()
+    public AExpOuLogica()
     {
         // Constructor
     }
 
-    public ADiferenteRelacional(
-        @SuppressWarnings("hiding") PExp _l_,
-        @SuppressWarnings("hiding") TDiferente _diferente_,
-        @SuppressWarnings("hiding") PExp _r_)
+    public AExpOuLogica(
+        @SuppressWarnings("hiding") PLogica _logica_,
+        @SuppressWarnings("hiding") TOu _ou_,
+        @SuppressWarnings("hiding") PItem _item_)
     {
         // Constructor
-        setL(_l_);
+        setLogica(_logica_);
 
-        setDiferente(_diferente_);
+        setOu(_ou_);
 
-        setR(_r_);
+        setItem(_item_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ADiferenteRelacional(
-            cloneNode(this._l_),
-            cloneNode(this._diferente_),
-            cloneNode(this._r_));
+        return new AExpOuLogica(
+            cloneNode(this._logica_),
+            cloneNode(this._ou_),
+            cloneNode(this._item_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADiferenteRelacional(this);
+        ((Analysis) sw).caseAExpOuLogica(this);
     }
 
-    public PExp getL()
+    public PLogica getLogica()
     {
-        return this._l_;
+        return this._logica_;
     }
 
-    public void setL(PExp node)
+    public void setLogica(PLogica node)
     {
-        if(this._l_ != null)
+        if(this._logica_ != null)
         {
-            this._l_.parent(null);
+            this._logica_.parent(null);
         }
 
         if(node != null)
@@ -66,19 +66,19 @@ public final class ADiferenteRelacional extends PRelacional
             node.parent(this);
         }
 
-        this._l_ = node;
+        this._logica_ = node;
     }
 
-    public TDiferente getDiferente()
+    public TOu getOu()
     {
-        return this._diferente_;
+        return this._ou_;
     }
 
-    public void setDiferente(TDiferente node)
+    public void setOu(TOu node)
     {
-        if(this._diferente_ != null)
+        if(this._ou_ != null)
         {
-            this._diferente_.parent(null);
+            this._ou_.parent(null);
         }
 
         if(node != null)
@@ -91,19 +91,19 @@ public final class ADiferenteRelacional extends PRelacional
             node.parent(this);
         }
 
-        this._diferente_ = node;
+        this._ou_ = node;
     }
 
-    public PExp getR()
+    public PItem getItem()
     {
-        return this._r_;
+        return this._item_;
     }
 
-    public void setR(PExp node)
+    public void setItem(PItem node)
     {
-        if(this._r_ != null)
+        if(this._item_ != null)
         {
-            this._r_.parent(null);
+            this._item_.parent(null);
         }
 
         if(node != null)
@@ -116,37 +116,37 @@ public final class ADiferenteRelacional extends PRelacional
             node.parent(this);
         }
 
-        this._r_ = node;
+        this._item_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._l_)
-            + toString(this._diferente_)
-            + toString(this._r_);
+            + toString(this._logica_)
+            + toString(this._ou_)
+            + toString(this._item_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._l_ == child)
+        if(this._logica_ == child)
         {
-            this._l_ = null;
+            this._logica_ = null;
             return;
         }
 
-        if(this._diferente_ == child)
+        if(this._ou_ == child)
         {
-            this._diferente_ = null;
+            this._ou_ = null;
             return;
         }
 
-        if(this._r_ == child)
+        if(this._item_ == child)
         {
-            this._r_ = null;
+            this._item_ = null;
             return;
         }
 
@@ -157,21 +157,21 @@ public final class ADiferenteRelacional extends PRelacional
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._l_ == oldChild)
+        if(this._logica_ == oldChild)
         {
-            setL((PExp) newChild);
+            setLogica((PLogica) newChild);
             return;
         }
 
-        if(this._diferente_ == oldChild)
+        if(this._ou_ == oldChild)
         {
-            setDiferente((TDiferente) newChild);
+            setOu((TOu) newChild);
             return;
         }
 
-        if(this._r_ == oldChild)
+        if(this._item_ == oldChild)
         {
-            setR((PExp) newChild);
+            setItem((PItem) newChild);
             return;
         }
 

@@ -2,7 +2,7 @@
 
 package node;
 
-public abstract class PLogFator extends Node
+public abstract class POper extends Node
 {
     // Empty body
 }

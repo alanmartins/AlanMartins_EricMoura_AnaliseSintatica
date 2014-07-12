@@ -11,7 +11,10 @@ inicio
 	r <- -12.35;
 	TexTo <- 'Ola Mundo';
 	
-	
+	/* nova linha
+	 **nova linha
+	 **ultima linha
+	*/
 	
 	enquanto(nao (a >= 4 e b < 3 ou a == b)) faca
 		a <- - a + b;

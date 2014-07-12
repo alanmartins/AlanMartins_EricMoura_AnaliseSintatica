@@ -2,7 +2,7 @@
 
 package node;
 
-public abstract class PUnario extends Node
+public abstract class PExpressao extends Node
 {
     // Empty body
 }

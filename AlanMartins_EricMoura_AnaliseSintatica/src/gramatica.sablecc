@@ -90,6 +90,7 @@ Ignored Tokens
  	 
  	 
 Productions
+
 	program = programa id inicio declaracao comando fim;
 
   	declaracao = {unico} variavel_definicao | {multiplo} declaracao variavel_definicao | {const} constante identificador valor ponto_virgula ;
@@ -109,10 +110,13 @@ Productions
  	
  	comando = {unico} definicao_comando | {multiplo} comando definicao_comando ;
 
-  	definicao_comando = {decl_atribuicao} identificador atribuicao exp ponto_virgula 
+  	definicao_comando = {decl_atribuicao} identificador atribuicao exp ponto_virgula
+  					  | {atribuicao_exp_logica} identificador atribuicao exp_logica ponto_virgula 
   			   		  | {decl_leia}  leia  l_par  multiplo_id   identificador   r_par   ponto_virgula				  
-  					  | {decl_escreva} escreva l_par multipla_exp exp r_par ponto_virgula					 
-					  | {decl_avalie} avalie  l_par  exp  r_par  multiplo_caso  opcional_senao_caso  fim_avalie  ponto_virgula					  
+  					  | {decl_escreva} escreva l_par multipla_exp exp r_par ponto_virgula	
+  					  | {escreva_exp_logica} escreva l_par multipla_exp exp_logica r_par ponto_virgula				 
+					  | {decl_avalie} avalie  l_par  exp  r_par  multiplo_caso  opcional_senao_caso  fim_avalie  ponto_virgula	
+					  | {avalie_exp_logica} avalie  l_par  exp_logica  r_par  multiplo_caso  opcional_senao_caso  fim_avalie  ponto_virgula					  
 					  | {decl_enquanto} enquanto  l_par  exp_logica  r_par  faca  comando fim_enquanto ponto_virgula					  
 					  | {decl_repita} repita comando ate l_par exp_logica r_par ponto_virgula					  
 					  | {decl_para_ate} para identificador de num_inteiro ate [int]:num_inteiro faca comando fim_para ponto_virgula					  
@@ -129,33 +133,41 @@ Productions
 	multiplo_caso = definicao_caso* ;
 	definicao_caso = caso valor dois_pontos comando ;
 
-	multi_exp = exp virgula;
+	multi_exp = {exp_arit} exp virgula | {expressao_logica} exp_logica virgula;
  	multipla_exp = multi_exp* ;
-	
 
+
+	exp = {menos_unario} menos exp | {expressao} expressao;
 	
-	exp = {termo} termo | {mais} exp mais termo | {menos} exp menos termo ;
+	expressao = {termo} termo | {mais} expressao mais termo | {menos} expressao menos termo ;
   	 
-  	termo = {fator} unario | {multiplicacao} termo mult unario | {divisao} termo div unario ;
+  	termo = {fator} fator | {multiplicacao} termo mult fator | {divisao} termo div fator ;
   	
-  	unario = {menos_unario} menos fator | {fator} fator;
-
-  	fator = {identificador} id | {valor} valor | {exp} l_par  exp  r_par | {expressao} l_par exp_logica r_par;
+  	fator = {identificador} id | {valor} valor | {exp} l_par  exp  r_par ; 
   	
   	
   	
-  	exp_logica = {exp_ou} exp_logica ou item | {item_ou} item;
+  	exp_logica = {negacao} nao exp_logica |  {logica} logica ;
+  	
+  		logica = {exp_ou} logica ou item | {item_ou} item;
 
 		  item = {exp_xou} item xou log_termo | {item_xou} log_termo;
 	
-	 log_termo = {exp_e} log_termo e log_fator | {tem_e} log_fator;
-	 
-	 log_fator = {relacional} relacional  | {negacao} nao l_par exp_logica r_par;
-    
-    relacional = {igual}        [l]:exp   igual_log   [r]:exp |
-				 {diferente}    [l]:exp   diferente   [r]:exp |
-				 {menor}        [l]:exp   menor       [r]:exp |
-				 {maior}        [l]:exp   maior       [r]:exp |
-				 {menor_igual}  [l]:exp   menor_igual [r]:exp |
-				 {maior_igual}  [l]:exp   maior_igual [r]:exp
-	;           
+	 log_termo = {exp_e} log_termo e relacional | {relacio} relacional | {exp_par}  l_par exp_logica r_par;
+	 			  
+	relacional = {relacional} [l]:exp   operadores  [r]:exp;
+	
+	operadores = {igual} igual_log | {diferente} diferente | oper;
+	
+	      oper = {menor} menor | { maior} maior | {menor_igual} menor_igual | {maior_igual} maior_igual; 
+	
+	
+	
+
+	
+	
+	
+	
+	
+	       
+	

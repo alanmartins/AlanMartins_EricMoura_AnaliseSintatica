@@ -159,6 +159,11 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAAtribuicaoExpLogicaDefinicaoComando(AAtribuicaoExpLogicaDefinicaoComando node)
+    {
+        defaultCase(node);
+    }
+
     public void caseADeclLeiaDefinicaoComando(ADeclLeiaDefinicaoComando node)
     {
         defaultCase(node);
@@ -169,7 +174,17 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseAEscrevaExpLogicaDefinicaoComando(AEscrevaExpLogicaDefinicaoComando node)
+    {
+        defaultCase(node);
+    }
+
     public void caseADeclAvalieDefinicaoComando(ADeclAvalieDefinicaoComando node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAAvalieExpLogicaDefinicaoComando(AAvalieExpLogicaDefinicaoComando node)
     {
         defaultCase(node);
     }
@@ -229,7 +244,12 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAMultiExp(AMultiExp node)
+    public void caseAExpAritMultiExp(AExpAritMultiExp node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAExpressaoLogicaMultiExp(AExpressaoLogicaMultiExp node)
     {
         defaultCase(node);
     }
@@ -239,17 +259,27 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseATermoExp(ATermoExp node)
+    public void caseAMenosUnarioExp(AMenosUnarioExp node)
     {
         defaultCase(node);
     }
 
-    public void caseAMaisExp(AMaisExp node)
+    public void caseAExpressaoExp(AExpressaoExp node)
     {
         defaultCase(node);
     }
 
-    public void caseAMenosExp(AMenosExp node)
+    public void caseATermoExpressao(ATermoExpressao node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMaisExpressao(AMaisExpressao node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMenosExpressao(AMenosExpressao node)
     {
         defaultCase(node);
     }
@@ -269,16 +299,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAMenosUnarioUnario(AMenosUnarioUnario node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseAFatorUnario(AFatorUnario node)
-    {
-        defaultCase(node);
-    }
-
     public void caseAIdentificadorFator(AIdentificadorFator node)
     {
         defaultCase(node);
@@ -294,17 +314,22 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseAExpressaoFator(AExpressaoFator node)
+    public void caseANegacaoExpLogica(ANegacaoExpLogica node)
     {
         defaultCase(node);
     }
 
-    public void caseAExpOuExpLogica(AExpOuExpLogica node)
+    public void caseALogicaExpLogica(ALogicaExpLogica node)
     {
         defaultCase(node);
     }
 
-    public void caseAItemOuExpLogica(AItemOuExpLogica node)
+    public void caseAExpOuLogica(AExpOuLogica node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAItemOuLogica(AItemOuLogica node)
     {
         defaultCase(node);
     }
@@ -324,47 +349,52 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseATemELogTermo(ATemELogTermo node)
+    public void caseARelacioLogTermo(ARelacioLogTermo node)
     {
         defaultCase(node);
     }
 
-    public void caseARelacionalLogFator(ARelacionalLogFator node)
+    public void caseAExpParLogTermo(AExpParLogTermo node)
     {
         defaultCase(node);
     }
 
-    public void caseANegacaoLogFator(ANegacaoLogFator node)
+    public void caseARelacionalRelacional(ARelacionalRelacional node)
     {
         defaultCase(node);
     }
 
-    public void caseAIgualRelacional(AIgualRelacional node)
+    public void caseAIgualOperadores(AIgualOperadores node)
     {
         defaultCase(node);
     }
 
-    public void caseADiferenteRelacional(ADiferenteRelacional node)
+    public void caseADiferenteOperadores(ADiferenteOperadores node)
     {
         defaultCase(node);
     }
 
-    public void caseAMenorRelacional(AMenorRelacional node)
+    public void caseAOperadores(AOperadores node)
     {
         defaultCase(node);
     }
 
-    public void caseAMaiorRelacional(AMaiorRelacional node)
+    public void caseAMenorOper(AMenorOper node)
     {
         defaultCase(node);
     }
 
-    public void caseAMenorIgualRelacional(AMenorIgualRelacional node)
+    public void caseAMaiorOper(AMaiorOper node)
     {
         defaultCase(node);
     }
 
-    public void caseAMaiorIgualRelacional(AMaiorIgualRelacional node)
+    public void caseAMenorIgualOper(AMenorIgualOper node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseAMaiorIgualOper(AMaiorIgualOper node)
     {
         defaultCase(node);
     }

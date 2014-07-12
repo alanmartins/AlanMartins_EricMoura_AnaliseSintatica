@@ -5,26 +5,26 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMaisExp extends PExp
+public final class AMenosExpressao extends PExpressao
 {
-    private PExp _exp_;
-    private TMais _mais_;
+    private PExpressao _expressao_;
+    private TMenos _menos_;
     private PTermo _termo_;
 
-    public AMaisExp()
+    public AMenosExpressao()
     {
         // Constructor
     }
 
-    public AMaisExp(
-        @SuppressWarnings("hiding") PExp _exp_,
-        @SuppressWarnings("hiding") TMais _mais_,
+    public AMenosExpressao(
+        @SuppressWarnings("hiding") PExpressao _expressao_,
+        @SuppressWarnings("hiding") TMenos _menos_,
         @SuppressWarnings("hiding") PTermo _termo_)
     {
         // Constructor
-        setExp(_exp_);
+        setExpressao(_expressao_);
 
-        setMais(_mais_);
+        setMenos(_menos_);
 
         setTermo(_termo_);
 
@@ -33,27 +33,27 @@ public final class AMaisExp extends PExp
     @Override
     public Object clone()
     {
-        return new AMaisExp(
-            cloneNode(this._exp_),
-            cloneNode(this._mais_),
+        return new AMenosExpressao(
+            cloneNode(this._expressao_),
+            cloneNode(this._menos_),
             cloneNode(this._termo_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMaisExp(this);
+        ((Analysis) sw).caseAMenosExpressao(this);
     }
 
-    public PExp getExp()
+    public PExpressao getExpressao()
     {
-        return this._exp_;
+        return this._expressao_;
     }
 
-    public void setExp(PExp node)
+    public void setExpressao(PExpressao node)
     {
-        if(this._exp_ != null)
+        if(this._expressao_ != null)
         {
-            this._exp_.parent(null);
+            this._expressao_.parent(null);
         }
 
         if(node != null)
@@ -66,19 +66,19 @@ public final class AMaisExp extends PExp
             node.parent(this);
         }
 
-        this._exp_ = node;
+        this._expressao_ = node;
     }
 
-    public TMais getMais()
+    public TMenos getMenos()
     {
-        return this._mais_;
+        return this._menos_;
     }
 
-    public void setMais(TMais node)
+    public void setMenos(TMenos node)
     {
-        if(this._mais_ != null)
+        if(this._menos_ != null)
         {
-            this._mais_.parent(null);
+            this._menos_.parent(null);
         }
 
         if(node != null)
@@ -91,7 +91,7 @@ public final class AMaisExp extends PExp
             node.parent(this);
         }
 
-        this._mais_ = node;
+        this._menos_ = node;
     }
 
     public PTermo getTermo()
@@ -123,8 +123,8 @@ public final class AMaisExp extends PExp
     public String toString()
     {
         return ""
-            + toString(this._exp_)
-            + toString(this._mais_)
+            + toString(this._expressao_)
+            + toString(this._menos_)
             + toString(this._termo_);
     }
 
@@ -132,15 +132,15 @@ public final class AMaisExp extends PExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp_ == child)
+        if(this._expressao_ == child)
         {
-            this._exp_ = null;
+            this._expressao_ = null;
             return;
         }
 
-        if(this._mais_ == child)
+        if(this._menos_ == child)
         {
-            this._mais_ = null;
+            this._menos_ = null;
             return;
         }
 
@@ -157,15 +157,15 @@ public final class AMaisExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp_ == oldChild)
+        if(this._expressao_ == oldChild)
         {
-            setExp((PExp) newChild);
+            setExpressao((PExpressao) newChild);
             return;
         }
 
-        if(this._mais_ == oldChild)
+        if(this._menos_ == oldChild)
         {
-            setMais((TMais) newChild);
+            setMenos((TMenos) newChild);
             return;
         }
 

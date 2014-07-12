@@ -5,43 +5,38 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMenosExp extends PExp
+public final class AExpAritMultiExp extends PMultiExp
 {
     private PExp _exp_;
-    private TMenos _menos_;
-    private PTermo _termo_;
+    private TVirgula _virgula_;
 
-    public AMenosExp()
+    public AExpAritMultiExp()
     {
         // Constructor
     }
 
-    public AMenosExp(
+    public AExpAritMultiExp(
         @SuppressWarnings("hiding") PExp _exp_,
-        @SuppressWarnings("hiding") TMenos _menos_,
-        @SuppressWarnings("hiding") PTermo _termo_)
+        @SuppressWarnings("hiding") TVirgula _virgula_)
     {
         // Constructor
         setExp(_exp_);
 
-        setMenos(_menos_);
-
-        setTermo(_termo_);
+        setVirgula(_virgula_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMenosExp(
+        return new AExpAritMultiExp(
             cloneNode(this._exp_),
-            cloneNode(this._menos_),
-            cloneNode(this._termo_));
+            cloneNode(this._virgula_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMenosExp(this);
+        ((Analysis) sw).caseAExpAritMultiExp(this);
     }
 
     public PExp getExp()
@@ -69,16 +64,16 @@ public final class AMenosExp extends PExp
         this._exp_ = node;
     }
 
-    public TMenos getMenos()
+    public TVirgula getVirgula()
     {
-        return this._menos_;
+        return this._virgula_;
     }
 
-    public void setMenos(TMenos node)
+    public void setVirgula(TVirgula node)
     {
-        if(this._menos_ != null)
+        if(this._virgula_ != null)
         {
-            this._menos_.parent(null);
+            this._virgula_.parent(null);
         }
 
         if(node != null)
@@ -91,32 +86,7 @@ public final class AMenosExp extends PExp
             node.parent(this);
         }
 
-        this._menos_ = node;
-    }
-
-    public PTermo getTermo()
-    {
-        return this._termo_;
-    }
-
-    public void setTermo(PTermo node)
-    {
-        if(this._termo_ != null)
-        {
-            this._termo_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._termo_ = node;
+        this._virgula_ = node;
     }
 
     @Override
@@ -124,8 +94,7 @@ public final class AMenosExp extends PExp
     {
         return ""
             + toString(this._exp_)
-            + toString(this._menos_)
-            + toString(this._termo_);
+            + toString(this._virgula_);
     }
 
     @Override
@@ -138,15 +107,9 @@ public final class AMenosExp extends PExp
             return;
         }
 
-        if(this._menos_ == child)
+        if(this._virgula_ == child)
         {
-            this._menos_ = null;
-            return;
-        }
-
-        if(this._termo_ == child)
-        {
-            this._termo_ = null;
+            this._virgula_ = null;
             return;
         }
 
@@ -163,15 +126,9 @@ public final class AMenosExp extends PExp
             return;
         }
 
-        if(this._menos_ == oldChild)
+        if(this._virgula_ == oldChild)
         {
-            setMenos((TMenos) newChild);
-            return;
-        }
-
-        if(this._termo_ == oldChild)
-        {
-            setTermo((PTermo) newChild);
+            setVirgula((TVirgula) newChild);
             return;
         }
 

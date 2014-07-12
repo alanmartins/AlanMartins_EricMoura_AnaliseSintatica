@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ARelacionalLogFator extends PLogFator
+public final class ATermoExpressao extends PExpressao
 {
-    private PRelacional _relacional_;
+    private PTermo _termo_;
 
-    public ARelacionalLogFator()
+    public ATermoExpressao()
     {
         // Constructor
     }
 
-    public ARelacionalLogFator(
-        @SuppressWarnings("hiding") PRelacional _relacional_)
+    public ATermoExpressao(
+        @SuppressWarnings("hiding") PTermo _termo_)
     {
         // Constructor
-        setRelacional(_relacional_);
+        setTermo(_termo_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ARelacionalLogFator(
-            cloneNode(this._relacional_));
+        return new ATermoExpressao(
+            cloneNode(this._termo_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseARelacionalLogFator(this);
+        ((Analysis) sw).caseATermoExpressao(this);
     }
 
-    public PRelacional getRelacional()
+    public PTermo getTermo()
     {
-        return this._relacional_;
+        return this._termo_;
     }
 
-    public void setRelacional(PRelacional node)
+    public void setTermo(PTermo node)
     {
-        if(this._relacional_ != null)
+        if(this._termo_ != null)
         {
-            this._relacional_.parent(null);
+            this._termo_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class ARelacionalLogFator extends PLogFator
             node.parent(this);
         }
 
-        this._relacional_ = node;
+        this._termo_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._relacional_);
+            + toString(this._termo_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._relacional_ == child)
+        if(this._termo_ == child)
         {
-            this._relacional_ = null;
+            this._termo_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class ARelacionalLogFator extends PLogFator
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._relacional_ == oldChild)
+        if(this._termo_ == oldChild)
         {
-            setRelacional((PRelacional) newChild);
+            setTermo((PTermo) newChild);
             return;
         }
 

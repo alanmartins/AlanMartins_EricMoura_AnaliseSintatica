@@ -5,60 +5,60 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANegacaoLogFator extends PLogFator
+public final class AAtribuicaoExpLogicaDefinicaoComando extends PDefinicaoComando
 {
-    private TNao _nao_;
-    private TLPar _lPar_;
+    private PIdentificador _identificador_;
+    private TAtribuicao _atribuicao_;
     private PExpLogica _expLogica_;
-    private TRPar _rPar_;
+    private TPontoVirgula _pontoVirgula_;
 
-    public ANegacaoLogFator()
+    public AAtribuicaoExpLogicaDefinicaoComando()
     {
         // Constructor
     }
 
-    public ANegacaoLogFator(
-        @SuppressWarnings("hiding") TNao _nao_,
-        @SuppressWarnings("hiding") TLPar _lPar_,
+    public AAtribuicaoExpLogicaDefinicaoComando(
+        @SuppressWarnings("hiding") PIdentificador _identificador_,
+        @SuppressWarnings("hiding") TAtribuicao _atribuicao_,
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
-        @SuppressWarnings("hiding") TRPar _rPar_)
+        @SuppressWarnings("hiding") TPontoVirgula _pontoVirgula_)
     {
         // Constructor
-        setNao(_nao_);
+        setIdentificador(_identificador_);
 
-        setLPar(_lPar_);
+        setAtribuicao(_atribuicao_);
 
         setExpLogica(_expLogica_);
 
-        setRPar(_rPar_);
+        setPontoVirgula(_pontoVirgula_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANegacaoLogFator(
-            cloneNode(this._nao_),
-            cloneNode(this._lPar_),
+        return new AAtribuicaoExpLogicaDefinicaoComando(
+            cloneNode(this._identificador_),
+            cloneNode(this._atribuicao_),
             cloneNode(this._expLogica_),
-            cloneNode(this._rPar_));
+            cloneNode(this._pontoVirgula_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANegacaoLogFator(this);
+        ((Analysis) sw).caseAAtribuicaoExpLogicaDefinicaoComando(this);
     }
 
-    public TNao getNao()
+    public PIdentificador getIdentificador()
     {
-        return this._nao_;
+        return this._identificador_;
     }
 
-    public void setNao(TNao node)
+    public void setIdentificador(PIdentificador node)
     {
-        if(this._nao_ != null)
+        if(this._identificador_ != null)
         {
-            this._nao_.parent(null);
+            this._identificador_.parent(null);
         }
 
         if(node != null)
@@ -71,19 +71,19 @@ public final class ANegacaoLogFator extends PLogFator
             node.parent(this);
         }
 
-        this._nao_ = node;
+        this._identificador_ = node;
     }
 
-    public TLPar getLPar()
+    public TAtribuicao getAtribuicao()
     {
-        return this._lPar_;
+        return this._atribuicao_;
     }
 
-    public void setLPar(TLPar node)
+    public void setAtribuicao(TAtribuicao node)
     {
-        if(this._lPar_ != null)
+        if(this._atribuicao_ != null)
         {
-            this._lPar_.parent(null);
+            this._atribuicao_.parent(null);
         }
 
         if(node != null)
@@ -96,7 +96,7 @@ public final class ANegacaoLogFator extends PLogFator
             node.parent(this);
         }
 
-        this._lPar_ = node;
+        this._atribuicao_ = node;
     }
 
     public PExpLogica getExpLogica()
@@ -124,16 +124,16 @@ public final class ANegacaoLogFator extends PLogFator
         this._expLogica_ = node;
     }
 
-    public TRPar getRPar()
+    public TPontoVirgula getPontoVirgula()
     {
-        return this._rPar_;
+        return this._pontoVirgula_;
     }
 
-    public void setRPar(TRPar node)
+    public void setPontoVirgula(TPontoVirgula node)
     {
-        if(this._rPar_ != null)
+        if(this._pontoVirgula_ != null)
         {
-            this._rPar_.parent(null);
+            this._pontoVirgula_.parent(null);
         }
 
         if(node != null)
@@ -146,32 +146,32 @@ public final class ANegacaoLogFator extends PLogFator
             node.parent(this);
         }
 
-        this._rPar_ = node;
+        this._pontoVirgula_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._nao_)
-            + toString(this._lPar_)
+            + toString(this._identificador_)
+            + toString(this._atribuicao_)
             + toString(this._expLogica_)
-            + toString(this._rPar_);
+            + toString(this._pontoVirgula_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._nao_ == child)
+        if(this._identificador_ == child)
         {
-            this._nao_ = null;
+            this._identificador_ = null;
             return;
         }
 
-        if(this._lPar_ == child)
+        if(this._atribuicao_ == child)
         {
-            this._lPar_ = null;
+            this._atribuicao_ = null;
             return;
         }
 
@@ -181,9 +181,9 @@ public final class ANegacaoLogFator extends PLogFator
             return;
         }
 
-        if(this._rPar_ == child)
+        if(this._pontoVirgula_ == child)
         {
-            this._rPar_ = null;
+            this._pontoVirgula_ = null;
             return;
         }
 
@@ -194,15 +194,15 @@ public final class ANegacaoLogFator extends PLogFator
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._nao_ == oldChild)
+        if(this._identificador_ == oldChild)
         {
-            setNao((TNao) newChild);
+            setIdentificador((PIdentificador) newChild);
             return;
         }
 
-        if(this._lPar_ == oldChild)
+        if(this._atribuicao_ == oldChild)
         {
-            setLPar((TLPar) newChild);
+            setAtribuicao((TAtribuicao) newChild);
             return;
         }
 
@@ -212,9 +212,9 @@ public final class ANegacaoLogFator extends PLogFator
             return;
         }
 
-        if(this._rPar_ == oldChild)
+        if(this._pontoVirgula_ == oldChild)
         {
-            setRPar((TRPar) newChild);
+            setPontoVirgula((TPontoVirgula) newChild);
             return;
         }
 

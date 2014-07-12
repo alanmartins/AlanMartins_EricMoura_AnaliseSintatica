@@ -5,38 +5,38 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMenosUnarioUnario extends PUnario
+public final class AMenosUnarioExp extends PExp
 {
     private TMenos _menos_;
-    private PFator _fator_;
+    private PExp _exp_;
 
-    public AMenosUnarioUnario()
+    public AMenosUnarioExp()
     {
         // Constructor
     }
 
-    public AMenosUnarioUnario(
+    public AMenosUnarioExp(
         @SuppressWarnings("hiding") TMenos _menos_,
-        @SuppressWarnings("hiding") PFator _fator_)
+        @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
         setMenos(_menos_);
 
-        setFator(_fator_);
+        setExp(_exp_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMenosUnarioUnario(
+        return new AMenosUnarioExp(
             cloneNode(this._menos_),
-            cloneNode(this._fator_));
+            cloneNode(this._exp_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMenosUnarioUnario(this);
+        ((Analysis) sw).caseAMenosUnarioExp(this);
     }
 
     public TMenos getMenos()
@@ -64,16 +64,16 @@ public final class AMenosUnarioUnario extends PUnario
         this._menos_ = node;
     }
 
-    public PFator getFator()
+    public PExp getExp()
     {
-        return this._fator_;
+        return this._exp_;
     }
 
-    public void setFator(PFator node)
+    public void setExp(PExp node)
     {
-        if(this._fator_ != null)
+        if(this._exp_ != null)
         {
-            this._fator_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -86,7 +86,7 @@ public final class AMenosUnarioUnario extends PUnario
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._exp_ = node;
     }
 
     @Override
@@ -94,7 +94,7 @@ public final class AMenosUnarioUnario extends PUnario
     {
         return ""
             + toString(this._menos_)
-            + toString(this._fator_);
+            + toString(this._exp_);
     }
 
     @Override
@@ -107,9 +107,9 @@ public final class AMenosUnarioUnario extends PUnario
             return;
         }
 
-        if(this._fator_ == child)
+        if(this._exp_ == child)
         {
-            this._fator_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -126,9 +126,9 @@ public final class AMenosUnarioUnario extends PUnario
             return;
         }
 
-        if(this._fator_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

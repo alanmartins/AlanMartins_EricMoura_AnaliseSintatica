@@ -5,22 +5,22 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMultiExp extends PMultiExp
+public final class AExpressaoLogicaMultiExp extends PMultiExp
 {
-    private PExp _exp_;
+    private PExpLogica _expLogica_;
     private TVirgula _virgula_;
 
-    public AMultiExp()
+    public AExpressaoLogicaMultiExp()
     {
         // Constructor
     }
 
-    public AMultiExp(
-        @SuppressWarnings("hiding") PExp _exp_,
+    public AExpressaoLogicaMultiExp(
+        @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TVirgula _virgula_)
     {
         // Constructor
-        setExp(_exp_);
+        setExpLogica(_expLogica_);
 
         setVirgula(_virgula_);
 
@@ -29,26 +29,26 @@ public final class AMultiExp extends PMultiExp
     @Override
     public Object clone()
     {
-        return new AMultiExp(
-            cloneNode(this._exp_),
+        return new AExpressaoLogicaMultiExp(
+            cloneNode(this._expLogica_),
             cloneNode(this._virgula_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMultiExp(this);
+        ((Analysis) sw).caseAExpressaoLogicaMultiExp(this);
     }
 
-    public PExp getExp()
+    public PExpLogica getExpLogica()
     {
-        return this._exp_;
+        return this._expLogica_;
     }
 
-    public void setExp(PExp node)
+    public void setExpLogica(PExpLogica node)
     {
-        if(this._exp_ != null)
+        if(this._expLogica_ != null)
         {
-            this._exp_.parent(null);
+            this._expLogica_.parent(null);
         }
 
         if(node != null)
@@ -61,7 +61,7 @@ public final class AMultiExp extends PMultiExp
             node.parent(this);
         }
 
-        this._exp_ = node;
+        this._expLogica_ = node;
     }
 
     public TVirgula getVirgula()
@@ -93,7 +93,7 @@ public final class AMultiExp extends PMultiExp
     public String toString()
     {
         return ""
-            + toString(this._exp_)
+            + toString(this._expLogica_)
             + toString(this._virgula_);
     }
 
@@ -101,9 +101,9 @@ public final class AMultiExp extends PMultiExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp_ == child)
+        if(this._expLogica_ == child)
         {
-            this._exp_ = null;
+            this._expLogica_ = null;
             return;
         }
 
@@ -120,9 +120,9 @@ public final class AMultiExp extends PMultiExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp_ == oldChild)
+        if(this._expLogica_ == oldChild)
         {
-            setExp((PExp) newChild);
+            setExpLogica((PExpLogica) newChild);
             return;
         }
 

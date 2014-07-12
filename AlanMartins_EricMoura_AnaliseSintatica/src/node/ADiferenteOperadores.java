@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ATermoExp extends PExp
+public final class ADiferenteOperadores extends POperadores
 {
-    private PTermo _termo_;
+    private TDiferente _diferente_;
 
-    public ATermoExp()
+    public ADiferenteOperadores()
     {
         // Constructor
     }
 
-    public ATermoExp(
-        @SuppressWarnings("hiding") PTermo _termo_)
+    public ADiferenteOperadores(
+        @SuppressWarnings("hiding") TDiferente _diferente_)
     {
         // Constructor
-        setTermo(_termo_);
+        setDiferente(_diferente_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ATermoExp(
-            cloneNode(this._termo_));
+        return new ADiferenteOperadores(
+            cloneNode(this._diferente_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseATermoExp(this);
+        ((Analysis) sw).caseADiferenteOperadores(this);
     }
 
-    public PTermo getTermo()
+    public TDiferente getDiferente()
     {
-        return this._termo_;
+        return this._diferente_;
     }
 
-    public void setTermo(PTermo node)
+    public void setDiferente(TDiferente node)
     {
-        if(this._termo_ != null)
+        if(this._diferente_ != null)
         {
-            this._termo_.parent(null);
+            this._diferente_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class ATermoExp extends PExp
             node.parent(this);
         }
 
-        this._termo_ = node;
+        this._diferente_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._termo_);
+            + toString(this._diferente_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._termo_ == child)
+        if(this._diferente_ == child)
         {
-            this._termo_ = null;
+            this._diferente_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class ATermoExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._termo_ == oldChild)
+        if(this._diferente_ == oldChild)
         {
-            setTermo((PTermo) newChild);
+            setDiferente((TDiferente) newChild);
             return;
         }
 

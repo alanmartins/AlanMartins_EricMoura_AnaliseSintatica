@@ -5,18 +5,18 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpressaoFator extends PFator
+public final class AExpParLogTermo extends PLogTermo
 {
     private TLPar _lPar_;
     private PExpLogica _expLogica_;
     private TRPar _rPar_;
 
-    public AExpressaoFator()
+    public AExpParLogTermo()
     {
         // Constructor
     }
 
-    public AExpressaoFator(
+    public AExpParLogTermo(
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TRPar _rPar_)
@@ -33,7 +33,7 @@ public final class AExpressaoFator extends PFator
     @Override
     public Object clone()
     {
-        return new AExpressaoFator(
+        return new AExpParLogTermo(
             cloneNode(this._lPar_),
             cloneNode(this._expLogica_),
             cloneNode(this._rPar_));
@@ -41,7 +41,7 @@ public final class AExpressaoFator extends PFator
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpressaoFator(this);
+        ((Analysis) sw).caseAExpParLogTermo(this);
     }
 
     public TLPar getLPar()

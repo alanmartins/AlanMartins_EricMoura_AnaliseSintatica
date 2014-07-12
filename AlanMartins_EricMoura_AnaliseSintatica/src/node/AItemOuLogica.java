@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AFatorUnario extends PUnario
+public final class AItemOuLogica extends PLogica
 {
-    private PFator _fator_;
+    private PItem _item_;
 
-    public AFatorUnario()
+    public AItemOuLogica()
     {
         // Constructor
     }
 
-    public AFatorUnario(
-        @SuppressWarnings("hiding") PFator _fator_)
+    public AItemOuLogica(
+        @SuppressWarnings("hiding") PItem _item_)
     {
         // Constructor
-        setFator(_fator_);
+        setItem(_item_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AFatorUnario(
-            cloneNode(this._fator_));
+        return new AItemOuLogica(
+            cloneNode(this._item_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAFatorUnario(this);
+        ((Analysis) sw).caseAItemOuLogica(this);
     }
 
-    public PFator getFator()
+    public PItem getItem()
     {
-        return this._fator_;
+        return this._item_;
     }
 
-    public void setFator(PFator node)
+    public void setItem(PItem node)
     {
-        if(this._fator_ != null)
+        if(this._item_ != null)
         {
-            this._fator_.parent(null);
+            this._item_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AFatorUnario extends PUnario
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._item_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._fator_);
+            + toString(this._item_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._fator_ == child)
+        if(this._item_ == child)
         {
-            this._fator_ = null;
+            this._item_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AFatorUnario extends PUnario
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._fator_ == oldChild)
+        if(this._item_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setItem((PItem) newChild);
             return;
         }
 

@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AFatorTermo extends PTermo
+public final class AMaiorIgualOper extends POper
 {
-    private PFator _fator_;
+    private TMaiorIgual _maiorIgual_;
 
-    public AFatorTermo()
+    public AMaiorIgualOper()
     {
         // Constructor
     }
 
-    public AFatorTermo(
-        @SuppressWarnings("hiding") PFator _fator_)
+    public AMaiorIgualOper(
+        @SuppressWarnings("hiding") TMaiorIgual _maiorIgual_)
     {
         // Constructor
-        setFator(_fator_);
+        setMaiorIgual(_maiorIgual_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AFatorTermo(
-            cloneNode(this._fator_));
+        return new AMaiorIgualOper(
+            cloneNode(this._maiorIgual_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAFatorTermo(this);
+        ((Analysis) sw).caseAMaiorIgualOper(this);
     }
 
-    public PFator getFator()
+    public TMaiorIgual getMaiorIgual()
     {
-        return this._fator_;
+        return this._maiorIgual_;
     }
 
-    public void setFator(PFator node)
+    public void setMaiorIgual(TMaiorIgual node)
     {
-        if(this._fator_ != null)
+        if(this._maiorIgual_ != null)
         {
-            this._fator_.parent(null);
+            this._maiorIgual_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AFatorTermo extends PTermo
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._maiorIgual_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._fator_);
+            + toString(this._maiorIgual_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._fator_ == child)
+        if(this._maiorIgual_ == child)
         {
-            this._fator_ = null;
+            this._maiorIgual_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AFatorTermo extends PTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._fator_ == oldChild)
+        if(this._maiorIgual_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setMaiorIgual((TMaiorIgual) newChild);
             return;
         }
 

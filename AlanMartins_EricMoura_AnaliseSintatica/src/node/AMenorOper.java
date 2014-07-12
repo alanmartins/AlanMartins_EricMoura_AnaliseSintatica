@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class ATemELogTermo extends PLogTermo
+public final class AMenorOper extends POper
 {
-    private PLogFator _logFator_;
+    private TMenor _menor_;
 
-    public ATemELogTermo()
+    public AMenorOper()
     {
         // Constructor
     }
 
-    public ATemELogTermo(
-        @SuppressWarnings("hiding") PLogFator _logFator_)
+    public AMenorOper(
+        @SuppressWarnings("hiding") TMenor _menor_)
     {
         // Constructor
-        setLogFator(_logFator_);
+        setMenor(_menor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ATemELogTermo(
-            cloneNode(this._logFator_));
+        return new AMenorOper(
+            cloneNode(this._menor_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseATemELogTermo(this);
+        ((Analysis) sw).caseAMenorOper(this);
     }
 
-    public PLogFator getLogFator()
+    public TMenor getMenor()
     {
-        return this._logFator_;
+        return this._menor_;
     }
 
-    public void setLogFator(PLogFator node)
+    public void setMenor(TMenor node)
     {
-        if(this._logFator_ != null)
+        if(this._menor_ != null)
         {
-            this._logFator_.parent(null);
+            this._menor_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class ATemELogTermo extends PLogTermo
             node.parent(this);
         }
 
-        this._logFator_ = node;
+        this._menor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._logFator_);
+            + toString(this._menor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._logFator_ == child)
+        if(this._menor_ == child)
         {
-            this._logFator_ = null;
+            this._menor_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class ATemELogTermo extends PLogTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._logFator_ == oldChild)
+        if(this._menor_ == oldChild)
         {
-            setLogFator((PLogFator) newChild);
+            setMenor((TMenor) newChild);
             return;
         }
 

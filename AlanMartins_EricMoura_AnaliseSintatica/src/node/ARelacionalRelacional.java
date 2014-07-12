@@ -5,26 +5,26 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMaiorRelacional extends PRelacional
+public final class ARelacionalRelacional extends PRelacional
 {
     private PExp _l_;
-    private TMaior _maior_;
+    private POperadores _operadores_;
     private PExp _r_;
 
-    public AMaiorRelacional()
+    public ARelacionalRelacional()
     {
         // Constructor
     }
 
-    public AMaiorRelacional(
+    public ARelacionalRelacional(
         @SuppressWarnings("hiding") PExp _l_,
-        @SuppressWarnings("hiding") TMaior _maior_,
+        @SuppressWarnings("hiding") POperadores _operadores_,
         @SuppressWarnings("hiding") PExp _r_)
     {
         // Constructor
         setL(_l_);
 
-        setMaior(_maior_);
+        setOperadores(_operadores_);
 
         setR(_r_);
 
@@ -33,15 +33,15 @@ public final class AMaiorRelacional extends PRelacional
     @Override
     public Object clone()
     {
-        return new AMaiorRelacional(
+        return new ARelacionalRelacional(
             cloneNode(this._l_),
-            cloneNode(this._maior_),
+            cloneNode(this._operadores_),
             cloneNode(this._r_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMaiorRelacional(this);
+        ((Analysis) sw).caseARelacionalRelacional(this);
     }
 
     public PExp getL()
@@ -69,16 +69,16 @@ public final class AMaiorRelacional extends PRelacional
         this._l_ = node;
     }
 
-    public TMaior getMaior()
+    public POperadores getOperadores()
     {
-        return this._maior_;
+        return this._operadores_;
     }
 
-    public void setMaior(TMaior node)
+    public void setOperadores(POperadores node)
     {
-        if(this._maior_ != null)
+        if(this._operadores_ != null)
         {
-            this._maior_.parent(null);
+            this._operadores_.parent(null);
         }
 
         if(node != null)
@@ -91,7 +91,7 @@ public final class AMaiorRelacional extends PRelacional
             node.parent(this);
         }
 
-        this._maior_ = node;
+        this._operadores_ = node;
     }
 
     public PExp getR()
@@ -124,7 +124,7 @@ public final class AMaiorRelacional extends PRelacional
     {
         return ""
             + toString(this._l_)
-            + toString(this._maior_)
+            + toString(this._operadores_)
             + toString(this._r_);
     }
 
@@ -138,9 +138,9 @@ public final class AMaiorRelacional extends PRelacional
             return;
         }
 
-        if(this._maior_ == child)
+        if(this._operadores_ == child)
         {
-            this._maior_ = null;
+            this._operadores_ = null;
             return;
         }
 
@@ -163,9 +163,9 @@ public final class AMaiorRelacional extends PRelacional
             return;
         }
 
-        if(this._maior_ == oldChild)
+        if(this._operadores_ == oldChild)
         {
-            setMaior((TMaior) newChild);
+            setOperadores((POperadores) newChild);
             return;
         }
 

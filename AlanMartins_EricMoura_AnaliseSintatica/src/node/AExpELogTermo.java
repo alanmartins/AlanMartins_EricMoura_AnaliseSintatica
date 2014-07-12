@@ -9,7 +9,7 @@ public final class AExpELogTermo extends PLogTermo
 {
     private PLogTermo _logTermo_;
     private TE _e_;
-    private PLogFator _logFator_;
+    private PRelacional _relacional_;
 
     public AExpELogTermo()
     {
@@ -19,14 +19,14 @@ public final class AExpELogTermo extends PLogTermo
     public AExpELogTermo(
         @SuppressWarnings("hiding") PLogTermo _logTermo_,
         @SuppressWarnings("hiding") TE _e_,
-        @SuppressWarnings("hiding") PLogFator _logFator_)
+        @SuppressWarnings("hiding") PRelacional _relacional_)
     {
         // Constructor
         setLogTermo(_logTermo_);
 
         setE(_e_);
 
-        setLogFator(_logFator_);
+        setRelacional(_relacional_);
 
     }
 
@@ -36,7 +36,7 @@ public final class AExpELogTermo extends PLogTermo
         return new AExpELogTermo(
             cloneNode(this._logTermo_),
             cloneNode(this._e_),
-            cloneNode(this._logFator_));
+            cloneNode(this._relacional_));
     }
 
     public void apply(Switch sw)
@@ -94,16 +94,16 @@ public final class AExpELogTermo extends PLogTermo
         this._e_ = node;
     }
 
-    public PLogFator getLogFator()
+    public PRelacional getRelacional()
     {
-        return this._logFator_;
+        return this._relacional_;
     }
 
-    public void setLogFator(PLogFator node)
+    public void setRelacional(PRelacional node)
     {
-        if(this._logFator_ != null)
+        if(this._relacional_ != null)
         {
-            this._logFator_.parent(null);
+            this._relacional_.parent(null);
         }
 
         if(node != null)
@@ -116,7 +116,7 @@ public final class AExpELogTermo extends PLogTermo
             node.parent(this);
         }
 
-        this._logFator_ = node;
+        this._relacional_ = node;
     }
 
     @Override
@@ -125,7 +125,7 @@ public final class AExpELogTermo extends PLogTermo
         return ""
             + toString(this._logTermo_)
             + toString(this._e_)
-            + toString(this._logFator_);
+            + toString(this._relacional_);
     }
 
     @Override
@@ -144,9 +144,9 @@ public final class AExpELogTermo extends PLogTermo
             return;
         }
 
-        if(this._logFator_ == child)
+        if(this._relacional_ == child)
         {
-            this._logFator_ = null;
+            this._relacional_ = null;
             return;
         }
 
@@ -169,9 +169,9 @@ public final class AExpELogTermo extends PLogTermo
             return;
         }
 
-        if(this._logFator_ == oldChild)
+        if(this._relacional_ == oldChild)
         {
-            setLogFator((PLogFator) newChild);
+            setRelacional((PRelacional) newChild);
             return;
         }
 

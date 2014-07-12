@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AFatorTermo extends PTermo
+public final class ARelacioLogTermo extends PLogTermo
 {
-    private PFator _fator_;
+    private PRelacional _relacional_;
 
-    public AFatorTermo()
+    public ARelacioLogTermo()
     {
         // Constructor
     }
 
-    public AFatorTermo(
-        @SuppressWarnings("hiding") PFator _fator_)
+    public ARelacioLogTermo(
+        @SuppressWarnings("hiding") PRelacional _relacional_)
     {
         // Constructor
-        setFator(_fator_);
+        setRelacional(_relacional_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AFatorTermo(
-            cloneNode(this._fator_));
+        return new ARelacioLogTermo(
+            cloneNode(this._relacional_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAFatorTermo(this);
+        ((Analysis) sw).caseARelacioLogTermo(this);
     }
 
-    public PFator getFator()
+    public PRelacional getRelacional()
     {
-        return this._fator_;
+        return this._relacional_;
     }
 
-    public void setFator(PFator node)
+    public void setRelacional(PRelacional node)
     {
-        if(this._fator_ != null)
+        if(this._relacional_ != null)
         {
-            this._fator_.parent(null);
+            this._relacional_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AFatorTermo extends PTermo
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._relacional_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._fator_);
+            + toString(this._relacional_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._fator_ == child)
+        if(this._relacional_ == child)
         {
-            this._fator_ = null;
+            this._relacional_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AFatorTermo extends PTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._fator_ == oldChild)
+        if(this._relacional_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setRelacional((PRelacional) newChild);
             return;
         }
 

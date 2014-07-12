@@ -5,45 +5,45 @@ package node;
 import analysis.*;
 
 @SuppressWarnings("nls")
-public final class AItemOuExpLogica extends PExpLogica
+public final class ALogicaExpLogica extends PExpLogica
 {
-    private PItem _item_;
+    private PLogica _logica_;
 
-    public AItemOuExpLogica()
+    public ALogicaExpLogica()
     {
         // Constructor
     }
 
-    public AItemOuExpLogica(
-        @SuppressWarnings("hiding") PItem _item_)
+    public ALogicaExpLogica(
+        @SuppressWarnings("hiding") PLogica _logica_)
     {
         // Constructor
-        setItem(_item_);
+        setLogica(_logica_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AItemOuExpLogica(
-            cloneNode(this._item_));
+        return new ALogicaExpLogica(
+            cloneNode(this._logica_));
     }
 
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAItemOuExpLogica(this);
+        ((Analysis) sw).caseALogicaExpLogica(this);
     }
 
-    public PItem getItem()
+    public PLogica getLogica()
     {
-        return this._item_;
+        return this._logica_;
     }
 
-    public void setItem(PItem node)
+    public void setLogica(PLogica node)
     {
-        if(this._item_ != null)
+        if(this._logica_ != null)
         {
-            this._item_.parent(null);
+            this._logica_.parent(null);
         }
 
         if(node != null)
@@ -56,23 +56,23 @@ public final class AItemOuExpLogica extends PExpLogica
             node.parent(this);
         }
 
-        this._item_ = node;
+        this._logica_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._item_);
+            + toString(this._logica_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._item_ == child)
+        if(this._logica_ == child)
         {
-            this._item_ = null;
+            this._logica_ = null;
             return;
         }
 
@@ -83,9 +83,9 @@ public final class AItemOuExpLogica extends PExpLogica
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._item_ == oldChild)
+        if(this._logica_ == oldChild)
         {
-            setItem((PItem) newChild);
+            setLogica((PLogica) newChild);
             return;
         }
 
